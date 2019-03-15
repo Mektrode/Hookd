@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <title>Combo Play Ground</title>
+    <meta charset="UTF-8" />
+  </head>
+
+  <body>
+    <center>
+      <h1>Don't touch that Million</h1>
+      <button onclick="start()">Start</button>
+      <button onclick="end()">I Give Up!!!</button>
+      <div id="game" style="visibility:hidden">
+        <p>Your Target is to get: <span id="target"></span></p>
+        <button onclick="reset()">Reset Your Progress</button>
+        <div id="currentnumber"></div>
+        <br />
+        <button onclick="sqrRoot()">Square Root</button>
+        <button onclick="half()">Half</button>
+        <button onclick="subtract()">-</button>
+        <button onclick="add()">+</button>
+        <button onclick="double()">Double</button>
+        <button onclick="square()">Square</button>
+
+        <!--
+          Timer Span
+          <p>
+            Yoo've been trying for
+            <span id="timer" style="font-weight:bold">1234</span>'s!
+          </p>
+        -->
+        <h1 id="gameOver" style="visibility:hidden">!!!!GAME OVER!!!!</h1>
+      </div>
+    </center>
+  </body>
+</html>
+
+<style></style>
+
+<!--
+  Todo:-
+  => Have a timeline ticker that balances in the middle
+  => Game over if reaches 1 million (add switch case)
+  => Cut out decimal places (round to nearest int)
+  => Add Timer Mode
+  => Add Multiplayer face 2 face
+  => Design the screens
+  => Implement the CSS
+-->
+
+<script>
+  var checkNum = false; //make reactive
+  var currentnum = 0;
+
+  function getRandomNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+  function rndto1dp(rndNum) {
+    return Math.floor(rndNum);
+  }
+
+  var start = function() {
+    newTarget = getRandomNum(2, 999999);
+    document.getElementById("target").innerHTML = newTarget;
+    //Show user's current number
+    document.getElementById("currentnumber").innerHTML = currentnum;
+    checkNum = false;
+
+    //Show Game Deets
+    document.getElementById("game").style.visibility = "visible";
+    //timerStart();
+  };
+
+  var reset = function() {
+    currentnum = 0;
+    document.getElementById("currentnumber").innerHTML = currentnum;
+  };
+
+  var end = function() {
+    document.getElementById("game").style.visibility = "hidden";
+  };
+
+  var checkNumber = function(latestNum) {
+    if (latestNum > 1000000) {
+      checkNum = true;
+      document.getElementById("gameOver").style.visibility = "visible";
+    } else {
+      console.log("now your number is " + latestNum);
+      document.getElementById("currentnumber").innerHTML = latestNum;
+    }
+  };
+
+  var add = function() {
+    currentnum++;
+    checkNumber(currentnum);
+  };
+
+  var square = function() {
+    //cut it at round of a decimal place
+    //then round to nearst whole number and whilst doing so flash highlight the number in red for a split second
+    currentnum = Math.pow(currentnum, 2);
+    console.log("now number is " + currentnum);
+    document.getElementById("currentnumber").innerHTML = currentnum;
+  };
+
+  var double = function() {
+    currentnum = currentnum * 2;
+    console.log("now number is " + currentnum);
+    document.getElementById("currentnumber").innerHTML = currentnum;
+  };
+
+  var half = function() {
+    currentnum = currentnum / 2;
+    console.log("now number is " + currentnum);
+    document.getElementById("currentnumber").innerHTML = currentnum;
+  };
+
+  var sqrRoot = function() {
+    currentnum = Math.pow(currentnum, 1 / 2);
+    console.log("now number is " + currentnum);
+    document.getElementById("currentnumber").innerHTML = currentnum;
+  };
+
+  var subtract = function() {
+    currentnum--;
+    console.log("now it's is " + currentnum);
+    document.getElementById("currentnumber").innerHTML = currentnum;
+  };
+</script>
