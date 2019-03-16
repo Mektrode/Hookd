@@ -8,7 +8,7 @@
     <center>
       <h1>Don't touch that Million</h1>
       <button onclick="start()">Start</button>
-      <button onclick="close()">I Give Up!!!</button>
+      <button onclick="closeIt()">I Give Up!!!</button>
       <div id="game" style="visibility:hidden">
         <p>Your Target is to get: <span id="target"></span></p>
         <button onclick="reset()">Reset Your Progress</button>
@@ -24,7 +24,7 @@
         <!--
           Timer Span
           <p>
-            Yoo've been trying for
+            You've been trying for
             <span id="timer" style="font-weight:bold">1234</span>'s!
           </p>
         -->
@@ -82,14 +82,16 @@
   var reset = function() {
     currentnum = 0;
     document.getElementById("currentnumber").innerHTML = currentnum;
+    console.log("reset executed!!!");
+  };
+  
+  var closeIt = function() {
+    reset();
+    end();
   };
 
   var end = function() {
     document.getElementById("game").style.visibility = "hidden";
-  };
-
-  var close = function() {
-    reset();
   };
 
   var checkNumber = function(latestNum) {
@@ -133,4 +135,5 @@
         console.log("Error!!!");
     }
   };
+  console.log("End of code.")
 </script>
