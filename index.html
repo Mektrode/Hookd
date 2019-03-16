@@ -8,18 +8,18 @@
     <center>
       <h1>Don't touch that Million</h1>
       <button onclick="start()">Start</button>
-      <button onclick="end()">I Give Up!!!</button>
+      <button onclick="close()">I Give Up!!!</button>
       <div id="game" style="visibility:hidden">
         <p>Your Target is to get: <span id="target"></span></p>
         <button onclick="reset()">Reset Your Progress</button>
         <div id="currentnumber"></div>
         <br />
-        <button onclick="sqrRoot()">Square Root</button>
-        <button onclick="half()">Half</button>
-        <button onclick="subtract()">-</button>
-        <button onclick="add()">+</button>
-        <button onclick="double()">Double</button>
-        <button onclick="square()">Square</button>
+        <button onclick="switchLogic(sqroot)">Square Root</button>
+        <button onclick="switchLogic(half)">Half</button>
+        <button onclick="switchLogic(subtract)">-</button>
+        <button onclick="switchLogic(add)">+</button>
+        <button onclick="switchLogic(double)">Double</button>
+        <button onclick="switchLogic(sqr)">Square</button>
 
         <!--
           Timer Span
@@ -48,7 +48,7 @@
 -->
 
 <script>
-  var checkNum = false; //make reactive
+  var limitReached = false; //make reactive
   var currentnum = 0;
 
   function getRandomNum(min, max) {
@@ -57,20 +57,26 @@
     return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
   }
 
-  function rndto1dp(rndNum) {
-    return Math.floor(rndNum);
+  function rndtoInt(rndNum) {
+    return Math.round(rndNum);
   }
+
+  var showPanel = function() {
+    document.getElementById("game").style.visibility = "visible";
+  };
 
   var start = function() {
     newTarget = getRandomNum(2, 999999);
     document.getElementById("target").innerHTML = newTarget;
     //Show user's current number
     document.getElementById("currentnumber").innerHTML = currentnum;
-    checkNum = false;
 
-    //Show Game Deets
-    document.getElementById("game").style.visibility = "visible";
-    //timerStart();
+    //Show Game Panel
+    showPanel();
+  };
+
+  var gameOverFunc = function() {
+    document.getElementById("gameOver").style.visibility = "visible";
   };
 
   var reset = function() {
@@ -82,50 +88,49 @@
     document.getElementById("game").style.visibility = "hidden";
   };
 
+  var close = function() {
+    reset();
+  };
+
   var checkNumber = function(latestNum) {
     if (latestNum > 1000000) {
-      checkNum = true;
-      document.getElementById("gameOver").style.visibility = "visible";
+      gameOverFunc();
     } else {
-      console.log("now your number is " + latestNum);
-      document.getElementById("currentnumber").innerHTML = latestNum;
+      console.log("your number is " + latestNum);
+      roundednum = rndtoInt(latestNum);
+      console.log("rounded is " + roundednum);
+      document.getElementById("currentnumber").innerHTML = roundednum;
     }
   };
 
-  var add = function() {
-    currentnum++;
-    checkNumber(currentnum);
-  };
-
-  var square = function() {
-    //cut it at round of a decimal place
-    //then round to nearst whole number and whilst doing so flash highlight the number in red for a split second
-    currentnum = Math.pow(currentnum, 2);
-    console.log("now number is " + currentnum);
-    document.getElementById("currentnumber").innerHTML = currentnum;
-  };
-
-  var double = function() {
-    currentnum = currentnum * 2;
-    console.log("now number is " + currentnum);
-    document.getElementById("currentnumber").innerHTML = currentnum;
-  };
-
-  var half = function() {
-    currentnum = currentnum / 2;
-    console.log("now number is " + currentnum);
-    document.getElementById("currentnumber").innerHTML = currentnum;
-  };
-
-  var sqrRoot = function() {
-    currentnum = Math.pow(currentnum, 1 / 2);
-    console.log("now number is " + currentnum);
-    document.getElementById("currentnumber").innerHTML = currentnum;
-  };
-
-  var subtract = function() {
-    currentnum--;
-    console.log("now it's is " + currentnum);
-    document.getElementById("currentnumber").innerHTML = currentnum;
+  var switchLogic = function(one) {
+    switch (one) {
+      case "subtract":
+        currentnum--;
+        checkNumber(currentnum);
+        break;
+      case "add":
+        currentnum++;
+        checkNumber(currentnum);
+        break;
+      case "double":
+        currentnum = currentnum * 2;
+        checkNumber(currentnum);
+        break;
+      case "half":
+        currentnum = currentnum / 2;
+        checkNumber(currentnum);
+        break;
+      case "sqr":
+        currentnum = Math.pow(currentnum, 2);
+        checkNumber(currentnum);
+        break;
+      case "sqroot":
+        currentnum = Math.pow(currentnum, 1 / 2);
+        checkNumber(currentnum);
+        break;
+      default:
+        console.log("Error!!!");
+    }
   };
 </script>
