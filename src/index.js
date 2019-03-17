@@ -1,5 +1,5 @@
   var limitReached = false; //make reactive
-  
+
   var currentnum = 0;
 
   function getRandomNum(min, max) {
@@ -58,27 +58,27 @@
 
   var switchLogic = function(one) {
     switch (one) {
-      case "subtract":
+      case 2:
         currentnum--;
         checkNumber(currentnum);
         break;
-      case "add":
+      case 1:
         currentnum++;
         checkNumber(currentnum);
         break;
-      case "double":
+      case 3:
         currentnum = currentnum * 2;
         checkNumber(currentnum);
         break;
-      case "half":
+      case 4:
         currentnum = currentnum / 2;
         checkNumber(currentnum);
         break;
-      case "sqr":
+      case 5:
         currentnum = Math.pow(currentnum, 2);
         checkNumber(currentnum);
         break;
-      case "sqroot":
+      case 6:
         currentnum = Math.pow(currentnum, 1 / 2);
         checkNumber(currentnum);
         break;
