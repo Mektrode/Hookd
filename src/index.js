@@ -26,14 +26,21 @@
     showPanel();
   };
 
-  var gameOverFunc = function() {
-    document.getElementById("gameOver").style.visibility = "visible";
+  var gameOverFunc = function(bool) {
+    if (bool) {
+        document.getElementById("gameOver").style.visibility = "visible";
+    }
+    if(!bool){
+        document.getElementById("gameOver").style.visibility = "hidden";
+    }
   };
+
 
   var reset = function() {
     currentnum = 0;
     document.getElementById("currentnumber").innerHTML = currentnum;
     console.log("reset executed!!!");
+    gameOverFunc(false);
   };
   
   var closeIt = function() {
@@ -47,7 +54,7 @@
 
   var checkNumber = function(latestNum) {
     if (latestNum > 1000000) {
-      gameOverFunc();
+      gameOverFunc(true);
     } else {
       console.log("your number is " + latestNum);
       roundednum = rndtoInt(latestNum);
