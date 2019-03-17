@@ -1,0 +1,89 @@
+  var limitReached = false; //make reactive
+  
+  var currentnum = 0;
+
+  function getRandomNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+  function rndtoInt(rndNum) {
+    return Math.round(rndNum);
+  }
+
+  var showPanel = function() {
+    document.getElementById("game").style.visibility = "visible";
+  };
+
+  var start = function() {
+    newTarget = getRandomNum(2, 999999);
+    document.getElementById("target").innerHTML = newTarget;
+    //Show user's current number
+    document.getElementById("currentnumber").innerHTML = currentnum;
+
+    //Show Game Panel
+    showPanel();
+  };
+
+  var gameOverFunc = function() {
+    document.getElementById("gameOver").style.visibility = "visible";
+  };
+
+  var reset = function() {
+    currentnum = 0;
+    document.getElementById("currentnumber").innerHTML = currentnum;
+    console.log("reset executed!!!");
+  };
+  
+  var closeIt = function() {
+    reset();
+    end();
+  };
+
+  var end = function() {
+    document.getElementById("game").style.visibility = "hidden";
+  };
+
+  var checkNumber = function(latestNum) {
+    if (latestNum > 1000000) {
+      gameOverFunc();
+    } else {
+      console.log("your number is " + latestNum);
+      roundednum = rndtoInt(latestNum);
+      console.log("rounded is " + roundednum);
+      document.getElementById("currentnumber").innerHTML = roundednum;
+    }
+  };
+
+  var switchLogic = function(one) {
+    switch (one) {
+      case "subtract":
+        currentnum--;
+        checkNumber(currentnum);
+        break;
+      case "add":
+        currentnum++;
+        checkNumber(currentnum);
+        break;
+      case "double":
+        currentnum = currentnum * 2;
+        checkNumber(currentnum);
+        break;
+      case "half":
+        currentnum = currentnum / 2;
+        checkNumber(currentnum);
+        break;
+      case "sqr":
+        currentnum = Math.pow(currentnum, 2);
+        checkNumber(currentnum);
+        break;
+      case "sqroot":
+        currentnum = Math.pow(currentnum, 1 / 2);
+        checkNumber(currentnum);
+        break;
+      default:
+        console.log("Error!!!");
+    }
+  };
+  console.log("End of code.")
