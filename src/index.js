@@ -53,13 +53,13 @@
   };
 
   var checkNumber = function(latestNum) {
+    console.log("your number is " + latestNum);
+    roundednum = rndtoInt(latestNum);
+    console.log("rounded is " + roundednum);
+    document.getElementById("currentnumber").innerHTML = roundednum;
+
     if (latestNum > 1000000) {
-      gameOverFunc(true);
-    } else {
-      console.log("your number is " + latestNum);
-      roundednum = rndtoInt(latestNum);
-      console.log("rounded is " + roundednum);
-      document.getElementById("currentnumber").innerHTML = roundednum;
+        gameOverFunc(true);
     }
   };
 
