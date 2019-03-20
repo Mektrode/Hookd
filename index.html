@@ -14,12 +14,19 @@
   </head>
 
   <body>
+      <p>Game Rules</p>
+      <ul>
+        <li>You have 60 seconds</li>
+        <li>You MUST NOT go over 1MIL or it's GAME OVER</li>
+        <li>The closest you get to 1 MIL at the end of the timer is added to the highscores board</li>
+      </ul>
     <center>
       <h1>Don't touch that Million</h1>
       <button onclick="start()">Start</button>
       <button onclick="closeIt()">I Give Up!!!</button>
       <div id="game" style="visibility:hidden">
-        <p>Your Target is to get: <span id="target"></span></p>
+        <p>Your Target is to get: 1,000,000!!!<!-- <span id="target"></span>--></p>
+        
         <button onclick="reset()">Reset Your Progress</button>
         <div id="currentnumber"></div>
         <br />
@@ -30,13 +37,8 @@
         <button onclick="switchLogic(3)">Double</button>
         <button onclick="switchLogic(5)">Square</button>
 
-        <!--
-          Timer Span
-          <p>
-            You've been trying for
-            <span id="timer" style="font-weight:bold">1234</span>'s!
-          </p>
-        -->
+        <p> You have: <span id="timer" style="font-weight:bold">1234</span>'s Left!</p>
+
         <h1 id="gameOver" style="visibility:hidden">!!!!GAME OVER!!!!</h1>
       </div>
     </center>

@@ -19,10 +19,10 @@
   var end = function() {
     document.getElementById("game").style.visibility = "hidden";
   };
-  
+
   var start = function() {
     newTarget = getRandomNum(2, 999999);
-    document.getElementById("target").innerHTML = newTarget;
+    //document.getElementById("target").innerHTML = newTarget;
     //Show user's current number
     document.getElementById("currentnumber").innerHTML = currentnum;
 
@@ -38,7 +38,6 @@
         document.getElementById("gameOver").style.visibility = "hidden";
     }
   };
-
 
   var reset = function() {
     currentnum = 2;
