@@ -1,6 +1,6 @@
   var limitReached = false; //make reactive
 
-  var currentnum = 0;
+  var currentnum = 2;
 
   function getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -16,6 +16,10 @@
     document.getElementById("game").style.visibility = "visible";
   };
 
+  var end = function() {
+    document.getElementById("game").style.visibility = "hidden";
+  };
+  
   var start = function() {
     newTarget = getRandomNum(2, 999999);
     document.getElementById("target").innerHTML = newTarget;
@@ -37,7 +41,7 @@
 
 
   var reset = function() {
-    currentnum = 0;
+    currentnum = 2;
     document.getElementById("currentnumber").innerHTML = currentnum;
     gameOverFunc(false);
   };
@@ -47,9 +51,6 @@
     end();
   };
 
-  var end = function() {
-    document.getElementById("game").style.visibility = "hidden";
-  };
 
   var checkNumber = function(latestNum) {
     console.log("your number is " + latestNum);

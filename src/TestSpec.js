@@ -17,14 +17,14 @@ describe("Test the one time functions", () => {
     });
     it("Check for random number", () => {
         let passRandom = false
+        const randomTest = getRandomNum (2, 10)
 
-        function testRnd(passRandom){
-            const randomTest = getRandomNum (2, 10)
-            
-            if (randomTest > 1 || randomTest < 11) {
+        function testRnd(testnum, passRandom){
+            if (testnum > 1 && testnum < 11) {
                 return passRandom = true;
             }
         }
-        expect(testRnd()).toEqual(true);
+
+        expect(testRnd(randomTest, passRandom)).toEqual(true);
     });
 });
