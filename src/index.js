@@ -39,7 +39,6 @@
   var reset = function() {
     currentnum = 0;
     document.getElementById("currentnumber").innerHTML = currentnum;
-    console.log("reset executed!!!");
     gameOverFunc(false);
   };
   

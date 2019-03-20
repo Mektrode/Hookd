@@ -11,8 +11,20 @@
   => Check Sqr() & expect 9
 */
 
-describe("Testing the rndtoInt function", () => {
+describe("Test the one time functions", () => {
     it("round float to nearest integer", () => {
         expect(rndtoInt(8.33211)).toEqual(8);
+    });
+    it("Check for random number", () => {
+        let passRandom = false
+
+        function testRnd(passRandom){
+            const randomTest = getRandomNum (2, 10)
+            
+            if (randomTest > 1 || randomTest < 11) {
+                return passRandom = true;
+            }
+        }
+        expect(testRnd()).toEqual(true);
     });
 });
