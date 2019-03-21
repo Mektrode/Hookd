@@ -30,14 +30,42 @@ describe("Test the one time functions", () => {
 });
 
 describe("Test the switches", () => {
-    let testnum = 3;
-    
+    let testnum = 7;
+/*
+    it("should change undefined to current DOM number which is set as 1 then add 1 to make it 2", () => {
+
+        let testresultt = switchLogic(1, undefined);
+        console.log("Now undef Test === " + testresultt)
+
+        expect(testresultt).toEqual(2);
+    })
+*/
     it("should double", () => {
-        console.log("First testnum is " + testnum)
         let testresultt = switchLogic(3, testnum);
         console.log("Now currentnum is " + testnum)
-        expect(testresultt).toEqual(6);
+        expect(testresultt).toEqual(testnum * 2);
     })
+    it("should half", () => {
+        let testresultt = switchLogic(4, testnum);
+        expect(testresultt).toEqual(testnum / 2);
+    })
+    it("should add 1", () => {
+        let testresultt = switchLogic(1, testnum);
+        expect(testresultt).toEqual(testnum + 1);
+    })
+    it("should subtract 1", () => {
+        let testresultt = switchLogic(2, testnum);
+        expect(testresultt).toEqual(testnum - 1);
+    })
+    it("should square", () => {
+        let testresultt = switchLogic(5, testnum);
+        expect(testresultt).toEqual(Math.pow(testnum, 2));
+    })
+    it("should square root", () => {
+        let testresultt = switchLogic(6, testnum);
+        expect(testresultt).toEqual(Math.pow(testnum, 1/2));
+    })
+
 });
 
 //Notes:-
@@ -45,4 +73,6 @@ describe("Test the switches", () => {
 //Make currentnum independant of switch
 //always have return as last thing in a function
 //return only a variable, not instructions
-//difference between 
+//check index.js line 82 comment
+//all tests run before user presses start() & start() sets currentnumber to 2
+//therefore all tests do not interfere with DOM
