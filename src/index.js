@@ -1,3 +1,4 @@
+
   var limitReached = false; //make reactive
 
   function setcurrent(newnum) {
@@ -28,12 +29,12 @@
 
   var start = function() {
     newTarget = getRandomNum(2, 999999);
-    //document.getElementById("target").innerHTML = newTarget;
-
-    //set default current number as 3
+    /*
+    No longer used:-
+    document.getElementById("target").innerHTML = newTarget;
+    */
     setcurrent(2);
 
-    //Show Game Panel
     showPanel();
   };
 
@@ -76,8 +77,6 @@
   var switchLogic = function(key, toSwitch) {
     let numbernow = toSwitch;
 
-    console.log("toSwitch is " + toSwitch);
-
     if(numbernow === undefined) {
         /* what is the difference between:-
         1) let numbernow = checkcurrent();
@@ -85,9 +84,16 @@
         3) numbernow = checkcurrent();
         renders 3 different results.
         */
-        numbernow = checkcurrent();
-        console.log("toSwitch parameter now defined to current number of " + numbernow);
+       let checkcurrent2 = checkcurrent()
+       if (isNaN(checkcurrent2)){
+            setcurrent(1);
+           numbernow = checkcurrent();
+       }
+       else {
+            numbernow = checkcurrent();
+       }
     }
+
     switch (key) {
       case 1:
         numbernow++;
@@ -117,6 +123,4 @@
         console.log("Error!!!");
     }
   };
-  console.log("End of code.")
-
-  //To be able to test the switch i had to detach it from a set variable and had to make it two way.
+  

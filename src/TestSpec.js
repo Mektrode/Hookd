@@ -31,18 +31,14 @@ describe("Test the one time functions", () => {
 
 describe("Test the switches", () => {
     let testnum = 7;
-/*
+
     it("should change undefined to current DOM number which is set as 1 then add 1 to make it 2", () => {
-
         let testresultt = switchLogic(1, undefined);
-        console.log("Now undef Test === " + testresultt)
-
         expect(testresultt).toEqual(2);
     })
-*/
+
     it("should double", () => {
         let testresultt = switchLogic(3, testnum);
-        console.log("Now currentnum is " + testnum)
         expect(testresultt).toEqual(testnum * 2);
     })
     it("should half", () => {
