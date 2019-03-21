@@ -1,6 +1,12 @@
   var limitReached = false; //make reactive
 
-  var currentnum = 2;
+  function setcurrent(newnum) {
+    document.getElementById("currentnumber").innerHTML = newnum;
+  }
+  
+  function checkcurrent () {
+    return document.getElementById("currentnumber").innerHTML;
+  }
 
   function getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -23,12 +29,17 @@
   var start = function() {
     newTarget = getRandomNum(2, 999999);
     //document.getElementById("target").innerHTML = newTarget;
-    //Show user's current number
-    document.getElementById("currentnumber").innerHTML = currentnum;
+
+    //set default current number as 3
+    setcurrent(2);
 
     //Show Game Panel
     showPanel();
   };
+
+  //For the future, will make a variable called gameOver set as either true or false
+  //The make a funtion that returns the opposite
+  //And a watcher so that if ever the state of the gameOver changes, the UI renders automatically
 
   var gameOverFunc = function(bool) {
     if (bool) {
@@ -40,8 +51,8 @@
   };
 
   var reset = function() {
-    currentnum = 2;
-    document.getElementById("currentnumber").innerHTML = currentnum;
+    //reset number to 3
+    setcurrent(3);
     gameOverFunc(false);
   };
   
@@ -51,45 +62,61 @@
   };
 
 
-  var checkNumber = function(latestNum) {
-    console.log("your number is " + latestNum);
+  var checknewnumber = function(latestNum) {
+
     roundednum = rndtoInt(latestNum);
-    console.log("rounded is " + roundednum);
-    document.getElementById("currentnumber").innerHTML = roundednum;
+
+    setcurrent(roundednum);
 
     if (latestNum > 1000000) {
         gameOverFunc(true);
     }
   };
 
-  var switchLogic = function(one) {
-    switch (one) {
-      case 2:
-        currentnum--;
-        checkNumber(currentnum);
-        break;
+  var switchLogic = function(key, toSwitch) {
+    let numbernow = toSwitch;
+
+    console.log("toSwitch is " + toSwitch);
+
+    if(numbernow === undefined) {
+        /* what is the difference between:-
+        1) let numbernow = checkcurrent();
+        2) return numbernow = checkcurrent();
+        3) numbernow = checkcurrent();
+        renders 3 different results.
+        */
+        numbernow = checkcurrent();
+        console.log("toSwitch parameter now defined to current number of " + numbernow);
+    }
+    switch (key) {
       case 1:
-        currentnum++;
-        checkNumber(currentnum);
-        break;
+        numbernow++;
+        checknewnumber(numbernow);
+        return numbernow;
+      case 2:
+        numbernow--;
+        checknewnumber(numbernow);
+        return numbernow;
       case 3:
-        currentnum = currentnum * 2;
-        checkNumber(currentnum);
-        break;
+        numbernow = numbernow * 2;
+        checknewnumber(numbernow);
+        return numbernow;
       case 4:
-        currentnum = currentnum / 2;
-        checkNumber(currentnum);
-        break;
+        numbernow = numbernow / 2;
+        checknewnumber(numbernow);
+        return numbernow;
       case 5:
-        currentnum = Math.pow(currentnum, 2);
-        checkNumber(currentnum);
-        break;
+        numbernow = Math.pow(numbernow, 2);
+        checknewnumber(numbernow);
+        return numbernow;
       case 6:
-        currentnum = Math.pow(currentnum, 1 / 2);
-        checkNumber(currentnum);
-        break;
+        numbernow = Math.pow(numbernow, 1 / 2);
+        checknewnumber(numbernow);
+        return numbernow;
       default:
         console.log("Error!!!");
     }
   };
   console.log("End of code.")
+
+  //To be able to test the switch i had to detach it from a set variable and had to make it two way.

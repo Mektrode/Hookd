@@ -28,3 +28,21 @@ describe("Test the one time functions", () => {
         expect(testRnd(randomTest, passRandom)).toEqual(true);
     });
 });
+
+describe("Test the switches", () => {
+    let testnum = 3;
+    
+    it("should double", () => {
+        console.log("First testnum is " + testnum)
+        let testresultt = switchLogic(3, testnum);
+        console.log("Now currentnum is " + testnum)
+        expect(testresultt).toEqual(6);
+    })
+});
+
+//Notes:-
+
+//Make currentnum independant of switch
+//always have return as last thing in a function
+//return only a variable, not instructions
+//difference between 
