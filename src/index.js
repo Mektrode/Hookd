@@ -1,80 +1,97 @@
 
-  var limitReached = false; //make reactive
+    var limitReached = false; //make reactive
 
-  function setcurrent(newnum) {
-    document.getElementById("currentnumber").innerHTML = newnum;
-  }
+    function setcurrent(newnum) {
+        document.getElementById("currentnumber").innerHTML = newnum;
+    }
   
-  function checkcurrent () {
-    return document.getElementById("currentnumber").innerHTML;
-  }
-
-  function getRandomNum(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-  }
-
-  function rndtoInt(rndNum) {
-    return Math.round(rndNum);
-  }
-
-  var showPanel = function() {
-    document.getElementById("game").style.visibility = "visible";
-  };
-
-  var end = function() {
-    document.getElementById("game").style.visibility = "hidden";
-  };
-
-  var start = function() {
-    newTarget = getRandomNum(2, 999999);
-    /*
-    No longer used:-
-    document.getElementById("target").innerHTML = newTarget;
-    */
-    setcurrent(2);
-
-    showPanel();
-  };
-
-  //For the future, will make a variable called gameOver set as either true or false
-  //The make a funtion that returns the opposite
-  //And a watcher so that if ever the state of the gameOver changes, the UI renders automatically
-
-  var gameOverFunc = function(bool) {
-    if (bool) {
-        document.getElementById("gameOver").style.visibility = "visible";
+    function checkcurrent () {
+        return document.getElementById("currentnumber").innerHTML;
     }
-    if(!bool){
-        document.getElementById("gameOver").style.visibility = "hidden";
+
+    function getRandomNum(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     }
-  };
 
-  var reset = function() {
-    //reset number to 3
-    setcurrent(3);
-    gameOverFunc(false);
-  };
-  
-  var closeIt = function() {
-    reset();
-    end();
-  };
-
-
-  var checknewnumber = function(latestNum) {
-
-    roundednum = rndtoInt(latestNum);
-
-    setcurrent(roundednum);
-
-    if (latestNum > 1000000) {
-        gameOverFunc(true);
+    function rndtoInt(rndNum) {
+        return Math.round(rndNum);
     }
-  };
 
-  var switchLogic = function(key, toSwitch) {
+    var showPanel = function() {
+        document.getElementById("game").style.visibility = "visible";
+    };
+
+    var end = function() {
+        document.getElementById("game").style.visibility = "hidden";
+    };
+
+    let currentTime = 60;
+
+    function startTimer(){
+        console.log("current time begin at " + currentTime)
+        currentTime = currentTime - 1;
+        console.log("current time NOW at " + currentTime)
+        document.getElementById("timer").innerHTML = currentTime
+        return currentTime
+    }
+    
+
+    var start = function() {
+        newTarget = getRandomNum(2, 999999);
+        /*
+        No longer used:-
+        document.getElementById("target").innerHTML = newTarget;
+        */
+        setcurrent(2);
+
+        setInterval(startTimer, 1000);
+
+        showPanel();
+    };
+
+    //For the future, will make a variable called gameOver set as either true or false
+    //The make a funtion that returns the opposite
+    //And a watcher so that if ever the state of the gameOver changes, the UI renders automatically
+
+    var gameOverFunc = function(bool) {
+        if (bool) {
+            document.getElementById("gameOver").style.visibility = "visible";
+        }
+        if(!bool){
+            document.getElementById("gameOver").style.visibility = "hidden";
+        }
+    };
+
+    var reset = function() {
+        //reset number to 3
+        setcurrent(3);
+        gameOverFunc(false);
+        currentTime = 60;
+        clearInterval(startTimer)
+
+    };
+    
+    var closeIt = function() {
+        reset();
+        end();
+    };
+
+
+    var checknewnumber = function(latestNum) {
+
+        roundednum = rndtoInt(latestNum);
+
+        setcurrent(roundednum);
+
+        if (latestNum > 1000000) {
+            gameOverFunc(true);
+        }
+    };
+
+    var switchLogic = function(key, toSwitch) {
+    
     let numbernow = toSwitch;
 
     if(numbernow === undefined) {
@@ -122,5 +139,6 @@
       default:
         console.log("Error!!!");
     }
+
   };
   
