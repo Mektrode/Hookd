@@ -27,6 +27,9 @@
         document.getElementById("game").style.visibility = "hidden";
     };
 
+    //Start at 2
+    let startnum = 2;
+
     let currentTime = 60;
 
     let timerOn = false;
@@ -76,7 +79,7 @@
         No longer used:-
         document.getElementById("target").innerHTML = newTarget;
         */
-        setcurrent(2);
+        setcurrent(startnum);
 
         switchTimer(true);
         countdown();
@@ -98,8 +101,7 @@
     };
 
     var reset = function() {
-        //reset number to 3
-        setcurrent(3);
+        setcurrent(startnum);
         gameOverFunc(false);
         switchTimer(false);
     };
