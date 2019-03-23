@@ -29,6 +29,9 @@
 
     let currentTime = 60;
 
+    let timerOn = false;
+
+    /*
     function startTimer(){
         console.log("current time begin at " + currentTime)
         currentTime = currentTime - 1;
@@ -36,7 +39,30 @@
         document.getElementById("timer").innerHTML = currentTime
         return currentTime
     }
-    
+    */
+
+    function countdown() {
+        if (timerOn === true){        
+            setInterval(function() {
+                //if ()
+                console.log("current time begin at " + currentTime)
+                currentTime = currentTime - 1;
+                console.log("current time NOW at " + currentTime)
+                document.getElementById("timer").innerHTML = currentTime
+                return currentTime
+            }, 1000)
+        }
+    }
+
+    function switchTimer(bool){
+        if(bool){
+            return timerOn = true
+        }
+        else if (!bool){
+            currentTime = 60;
+            return timerOn = false
+        }
+    }
 
     var start = function() {
         newTarget = getRandomNum(2, 999999);
@@ -46,7 +72,9 @@
         */
         setcurrent(2);
 
-        setInterval(startTimer, 1000);
+        switchTimer(true);
+
+        countdown();
 
         showPanel();
     };
@@ -68,9 +96,7 @@
         //reset number to 3
         setcurrent(3);
         gameOverFunc(false);
-        currentTime = 60;
-        clearInterval(startTimer)
-
+        switchTimer(false);
     };
     
     var closeIt = function() {
