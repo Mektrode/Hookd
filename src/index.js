@@ -81,8 +81,13 @@
         */
         setcurrent(startnum);
 
-        switchTimer(true);
-        countdown();
+        if (timerOn){
+            alert("Timer is already running. Press Reset Your Progress to restart!")
+        }
+        else if (!timerOn){
+            switchTimer(true);
+            countdown();
+        }
 
         showPanel();
     };
