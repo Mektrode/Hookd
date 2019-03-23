@@ -43,14 +43,22 @@
 
     function countdown() {
         if (timerOn === true){        
-            setInterval(function() {
+            var timedown = setInterval(function() {
                 //if ()
                 console.log("current time begin at " + currentTime)
                 currentTime = currentTime - 1;
                 console.log("current time NOW at " + currentTime)
                 document.getElementById("timer").innerHTML = currentTime
-                return currentTime
+                
+                if (currentTime === 0) {
+                    console.log("0 triggered")
+                    clearInterval(timedown);
+                    return currentTime    
+                }
             }, 1000)
+        }
+        else {
+            console.log("Timer switched off bro")
         }
     }
 
