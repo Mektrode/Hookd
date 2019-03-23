@@ -41,33 +41,29 @@
     }
     */
 
-    function countdown() {
-        if (timerOn === true){        
-            var timedown = setInterval(function() {
-                //if ()
-                console.log("current time begin at " + currentTime)
-                currentTime = currentTime - 1;
-                console.log("current time NOW at " + currentTime)
-                document.getElementById("timer").innerHTML = currentTime
-                
-                if (currentTime === 0) {
-                    console.log("0 triggered")
-                    clearInterval(timedown);
-                    return currentTime    
-                }
-            }, 1000)
+    var timedown = setInterval(function() {
+        if (timerOn){
+            console.log("current time begin at " + currentTime)
+            currentTime = currentTime - 1;
+            console.log("current time NOW at " + currentTime)
+            document.getElementById("timer").innerHTML = currentTime
         }
-        else {
-            console.log("Timer switched off bro")
+
+        if (currentTime === 0) {
+            switchTimer(false)  
         }
-    }
+    }, 1000)
 
     function switchTimer(bool){
         if(bool){
+            currentTime = 60
+            document.getElementById("timer").innerHTML = currentTime
             return timerOn = true
         }
         else if (!bool){
-            currentTime = 60;
+            clearInterval(timedown);  
+            currentTime = 0;
+            document.getElementById("timer").innerHTML = currentTime
             return timerOn = false
         }
     }
@@ -81,8 +77,6 @@
         setcurrent(2);
 
         switchTimer(true);
-
-        countdown();
 
         showPanel();
     };
