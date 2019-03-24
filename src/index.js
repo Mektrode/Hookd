@@ -48,14 +48,13 @@
     function countdown(){
         timedown = setInterval(function() {
             if (timerOn){
-                console.log("current time begin at " + currentTime)
                 currentTime = currentTime - 1;
-                console.log("current time NOW at " + currentTime)
                 document.getElementById("timer").innerHTML = currentTime
             }
 
             if (currentTime === 0) {
-                switchTimer(false)  
+                switchTimer(false)
+                gameOverFunc(true);
             }
         }, 1000)
     }
@@ -87,6 +86,7 @@
         else if (!timerOn){
             switchTimer(true);
             countdown();
+            gameOverFunc(false);
         }
 
         showPanel();
