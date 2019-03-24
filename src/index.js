@@ -34,15 +34,9 @@
 
     let timerOn = false;
 
-    /*
-    function startTimer(){
-        console.log("current time begin at " + currentTime)
-        currentTime = currentTime - 1;
-        console.log("current time NOW at " + currentTime)
-        document.getElementById("timer").innerHTML = currentTime
-        return currentTime
+    function duration(timenow) {
+        return 60 - timenow
     }
-    */
 
     var timedown
     function countdown(){
@@ -58,6 +52,7 @@
             }
         }, 1000)
     }
+
     function switchTimer(bool){
         if(bool){
             currentTime = 60
@@ -99,6 +94,9 @@
     var gameOverFunc = function(bool) {
         if (bool) {
             document.getElementById("gameOver").style.visibility = "visible";
+            // saveScore() which should save to highscores object
+            alert("Your score before the game ended was " + checkcurrent() + " in " + duration(currentTime) + " seconds")
+            closeIt();
         }
         if(!bool){
             document.getElementById("gameOver").style.visibility = "hidden";
@@ -118,11 +116,8 @@
 
 
     var checknewnumber = function(latestNum) {
-
         roundednum = rndtoInt(latestNum);
-
         setcurrent(roundednum);
-
         if (latestNum > 1000000) {
             gameOverFunc(true);
         }
@@ -130,53 +125,51 @@
 
     var switchLogic = function(key, toSwitch) {
     
-    let numbernow = toSwitch;
+        let numbernow = toSwitch;
 
-    if(numbernow === undefined) {
-        /* what is the difference between:-
-        1) let numbernow = checkcurrent();
-        2) return numbernow = checkcurrent();
-        3) numbernow = checkcurrent();
-        renders 3 different results.
-        */
-       let checkcurrent2 = checkcurrent()
-       if (isNaN(checkcurrent2)){
-            setcurrent(1);
-           numbernow = checkcurrent();
-       }
-       else {
-            numbernow = checkcurrent();
-       }
-    }
+        if(numbernow === undefined) {
+            /* what is the difference between:-
+            1) let numbernow = checkcurrent();
+            2) return numbernow = checkcurrent();
+            3) numbernow = checkcurrent();
+            renders 3 different results.
+            */
+            if (isNaN(checkcurrent())){
+                setcurrent(1);
+                numbernow = checkcurrent();
+            }
+            else {
+                numbernow = checkcurrent();
+            }
+        }
 
-    switch (key) {
-      case 1:
-        numbernow++;
-        checknewnumber(numbernow);
-        return numbernow;
-      case 2:
-        numbernow--;
-        checknewnumber(numbernow);
-        return numbernow;
-      case 3:
-        numbernow = numbernow * 2;
-        checknewnumber(numbernow);
-        return numbernow;
-      case 4:
-        numbernow = numbernow / 2;
-        checknewnumber(numbernow);
-        return numbernow;
-      case 5:
-        numbernow = Math.pow(numbernow, 2);
-        checknewnumber(numbernow);
-        return numbernow;
-      case 6:
-        numbernow = Math.pow(numbernow, 1 / 2);
-        checknewnumber(numbernow);
-        return numbernow;
-      default:
-        console.log("Error!!!");
-    }
-
+        switch (key) {
+            case 1:
+                numbernow++;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 2:
+                numbernow--;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 3:
+                numbernow = numbernow * 2;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 4:
+                numbernow = numbernow / 2;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 5:
+                numbernow = Math.pow(numbernow, 2);
+                checknewnumber(numbernow);
+                return numbernow;
+            case 6:
+                numbernow = Math.pow(numbernow, 1 / 2);
+                checknewnumber(numbernow);
+                return numbernow;
+            default:
+                console.log("Error!!!");
+        }
   };
   
