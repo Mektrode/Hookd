@@ -23,17 +23,20 @@
         document.getElementById("game").style.visibility = "visible";
     };
 
-    var end = function() {
+    var closePanel = function() {
         document.getElementById("game").style.visibility = "hidden";
     };
 
-    //Start at 2
+    //Users starting number
     let startnum = 2;
 
+    //Users timer
     let currentTime = 60;
 
     let timerOn = false;
 
+    //return duration of time lapsed
+    //should I make 60 a set variable and timenow a changing variable?
     function duration(timenow) {
         return 60 - timenow
     }
@@ -103,15 +106,22 @@
         }
     };
 
-    var reset = function() {
+    var clearIt = function () {
         setcurrent(startnum);
         gameOverFunc(false);
         switchTimer(false);
+    }
+
+    var reset = function() {
+        clearIt();
+        //start timer again after everything is cleared
+        switchTimer(true);
+        countdown();
     };
     
     var closeIt = function() {
-        reset();
-        end();
+        clearIt();
+        closePanel();
     };
 
 
@@ -126,6 +136,10 @@
     var switchLogic = function(key, toSwitch) {
     
         let numbernow = toSwitch;
+
+        /*if (!timerOn){
+            switchTimer(true);
+        }*/
 
         if(numbernow === undefined) {
             /* what is the difference between:-
