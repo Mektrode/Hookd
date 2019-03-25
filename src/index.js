@@ -41,6 +41,38 @@
         return 60 - timenow
     }
 
+    //Target Number
+    let target = 1000000
+
+    function checkAcc(input){
+        accRatio = input/target
+        accuracy = accRatio * 100
+        return rndtoInt(accuracy)
+    }
+
+    function addHighScore(){
+        console.log("Score: " + checkcurrent() + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(currentTime) + " seconds")
+        
+        newscoreRow = document.createElement("TR");
+        
+        newscoreDataScore = document.createElement("TD");
+        newscoreDataScoreInput = document.createTextNode(checkcurrent());
+        newscoreDataScore.appendChild(newscoreDataScoreInput);
+        
+        newscoreDataAcc = document.createElement("TD");
+        newscoreDataAccInput = document.createTextNode(checkAcc(checkcurrent()))
+        newscoreDataAcc.appendChild(newscoreDataAccInput)
+
+        newscoreDataTime = document.createElement("TD");
+        newscoreDataTimeInput = document.createTextNode(duration(currentTime))
+        newscoreDataTime.appendChild(newscoreDataTimeInput)
+        
+        newscoreRow.appendChild(newscoreDataScore, newscoreDataAcc, newscoreDataTime);
+        
+        document.getElementById("scores").appendChild(newscoreRow);
+        
+    }
+
     var timedown
     function countdown(){
         timedown = setInterval(function() {
@@ -99,6 +131,7 @@
             document.getElementById("gameOver").style.visibility = "visible";
             // saveScore() which should save to highscores object
             alert("Your score before the game ended was " + checkcurrent() + " in " + duration(currentTime) + " seconds")
+            addHighScore();
             closeIt();
         }
         if(!bool){
@@ -128,7 +161,7 @@
     var checknewnumber = function(latestNum) {
         roundednum = rndtoInt(latestNum);
         setcurrent(roundednum);
-        if (latestNum > 1000000) {
+        if (latestNum > target) {
             gameOverFunc(true);
         }
     };
