@@ -47,13 +47,16 @@
     function checkAcc(input){
         accRatio = input/target
         accuracy = accRatio * 100
-        return rndtoInt(accuracy)
+        roundedAcc = rndtoInt(accuracy)
+        return roundedAcc + "%"
     }
 
     function addHighScore(){
         console.log("Score: " + checkcurrent() + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(currentTime) + " seconds")
         
-        newscoreRow = document.createElement("TR");
+        var domFragment = document.createDocumentFragment();
+        var newscoreRow = document.createElement("TR");
+        domFragment.appendChild(newscoreRow)
         
         newscoreDataScore = document.createElement("TD");
         newscoreDataScoreInput = document.createTextNode(checkcurrent());
@@ -67,7 +70,9 @@
         newscoreDataTimeInput = document.createTextNode(duration(currentTime))
         newscoreDataTime.appendChild(newscoreDataTimeInput)
         
-        newscoreRow.appendChild(newscoreDataScore, newscoreDataAcc, newscoreDataTime);
+        newscoreRow.appendChild(newscoreDataScore) 
+        newscoreRow.appendChild(newscoreDataAcc)
+        newscoreRow.appendChild(newscoreDataTime)
         
         document.getElementById("scores").appendChild(newscoreRow);
         
