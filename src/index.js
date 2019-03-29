@@ -1,5 +1,17 @@
 
-    var limitReached = false; //make reactive
+    const state = {
+        //Users starting number
+        startnum : 2,
+
+        //Users timer
+        currentTime : 60,
+
+        //Is the countdown on?
+        timerOn : false,
+
+        //Target Number
+        target : 1000000
+    }
 
     function setcurrent(newnum) {
         document.getElementById("currentnumber").innerHTML = newnum;
@@ -27,32 +39,21 @@
         document.getElementById("game").style.visibility = "hidden";
     };
 
-    //Users starting number
-    let startnum = 2;
-
-    //Users timer
-    let currentTime = 60;
-
-    let timerOn = false;
-
     //return duration of time lapsed
     //should I make 60 a set variable and timenow a changing variable?
     function duration(timenow) {
         return 60 - timenow
     }
-
-    //Target Number
-    let target = 1000000
-
+    
     function checkAcc(input){
-        accRatio = input/target
+        accRatio = input/state.target
         accuracy = accRatio * 100
         roundedAcc = rndtoInt(accuracy)
         return roundedAcc + "%"
     }
 
     function addHighScore(){
-        console.log("Score: " + checkcurrent() + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(currentTime) + " seconds")
+        console.log("Score: " + checkcurrent() + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
         
         var domFragment = document.createDocumentFragment();
         var newscoreRow = document.createElement("TR");
@@ -67,7 +68,7 @@
         newscoreDataAcc.appendChild(newscoreDataAccInput)
 
         newscoreDataTime = document.createElement("TD");
-        newscoreDataTimeInput = document.createTextNode(duration(currentTime))
+        newscoreDataTimeInput = document.createTextNode(duration(state.currentTime))
         newscoreDataTime.appendChild(newscoreDataTimeInput)
         
         newscoreRow.appendChild(newscoreDataScore) 
@@ -81,12 +82,12 @@
     var timedown
     function countdown(){
         timedown = setInterval(function() {
-            if (timerOn){
-                currentTime = currentTime - 1;
-                document.getElementById("timer").innerHTML = currentTime
+            if (state.timerOn){
+                state.currentTime = state.currentTime - 1;
+                document.getElementById("timer").innerHTML = state.currentTime
             }
 
-            if (currentTime === 0) {
+            if (state.currentTime === 0) {
                 switchTimer(false)
                 gameOverFunc(true);
             }
@@ -95,15 +96,15 @@
 
     function switchTimer(bool){
         if(bool){
-            currentTime = 60
-            document.getElementById("timer").innerHTML = currentTime
-            return timerOn = true
+            state.currentTime = 60
+            document.getElementById("timer").innerHTML = state.currentTime
+            return state.timerOn = true
         }
         else if (!bool){
             clearInterval(timedown);  
-            currentTime = 0;
-            document.getElementById("timer").innerHTML = currentTime
-            return timerOn = false
+            state.currentTime = 0;
+            document.getElementById("timer").innerHTML = state.currentTime
+            return state.timerOn = false
         }
     }
 
@@ -113,12 +114,12 @@
         No longer used:-
         document.getElementById("target").innerHTML = newTarget;
         */
-        setcurrent(startnum);
+        setcurrent(state.startnum);
 
-        if (timerOn){
+        if (state.timerOn){
             alert("Timer is already running. Press Reset Your Progress to restart!")
         }
-        else if (!timerOn){
+        else if (!state.timerOn){
             switchTimer(true);
             countdown();
             gameOverFunc(false);
@@ -135,7 +136,7 @@
         if (bool) {
             document.getElementById("gameOver").style.visibility = "visible";
             // saveScore() which should save to highscores object
-            alert("Your score before the game ended was " + checkcurrent() + " in " + duration(currentTime) + " seconds")
+            alert("Your score before the game ended was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
             addHighScore();
             closeIt();
         }
@@ -145,7 +146,7 @@
     };
 
     var clearIt = function () {
-        setcurrent(startnum);
+        setcurrent(state.startnum);
         gameOverFunc(false);
         switchTimer(false);
     }
@@ -166,7 +167,7 @@
     var checknewnumber = function(latestNum) {
         roundednum = rndtoInt(latestNum);
         setcurrent(roundednum);
-        if (latestNum > target) {
+        if (latestNum > state.target) {
             gameOverFunc(true);
         }
     };
