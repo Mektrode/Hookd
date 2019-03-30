@@ -166,9 +166,11 @@
 
     var checknewnumber = function(latestNum) {
         roundednum = rndtoInt(latestNum);
-        setcurrent(roundednum);
         if (latestNum > state.target) {
             gameOverFunc(true);
+        }
+        else {
+            setcurrent(roundednum);
         }
     };
 
