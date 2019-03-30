@@ -139,7 +139,7 @@
         if (bool) {
             document.getElementById("gameOver").style.visibility = "visible";
             // saveScore() which should save to highscores object
-            alert("Your score before the game ended was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
+            alert("Saved Your Score which was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
             addHighScore();
             closeIt();
         }
@@ -169,8 +169,9 @@
 
     var checknewnumber = function(latestNum) {
         roundednum = rndtoInt(latestNum);
-        if (latestNum > state.target) {
+        if (latestNum > 1000000000) {
             gameOverFunc(true);
+            alert("WTH?!! You went over 1Billion!!!!")
         }
         else {
             setcurrent(roundednum);
