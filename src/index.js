@@ -10,7 +10,10 @@
         timerOn : false,
 
         //Target Number
-        target : 1000000
+        target : 100,
+
+        //show username board
+        chooseUser : true,
     }
 
     function setcurrent(newnum) {
@@ -110,11 +113,10 @@
     }
 
     var start = function() {
-        newTarget = getRandomNum(2, 999999);
-        /*
-        No longer used:-
-        document.getElementById("target").innerHTML = newTarget;
-        */
+        state.target = getRandomNum(2, 999999);
+        
+        document.getElementById("target").innerHTML = state.target;
+        
         setcurrent(state.startnum);
 
         if (state.timerOn){
