@@ -26,9 +26,9 @@
         <h3>High Scores</h3>
         <table>
           <thead>
-            <th>Score</th>
+            <th>Username</th>
             <th>Accuracy</th>
-            <th>Time</th>
+            <th>Time (ago)</th>
           </thead>
           <tbody id="scores">
             <tr>
@@ -48,6 +48,14 @@
       </div>
       <button onclick="start()">Start</button>
       <button onclick="closeIt()">I Give Up!!!</button>
+      <div id="uNameDiv">
+        <br>
+        <input id="usernameChosen" placeholder="Pick a username!" />
+        <button>Submit Username</button>
+        <br>
+        <br>
+        <button onclick="start()">Start with Guest</button>
+      </div>
       <div id="game" style="visibility:hidden">
         <p>Your Target is to get: 1,000,000!!!<!-- <span id="target"></span>--></p>
         

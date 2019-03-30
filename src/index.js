@@ -42,7 +42,8 @@
     //return duration of time lapsed
     //should I make 60 a set variable and timenow a changing variable?
     function duration(timenow) {
-        return 60 - timenow
+        timeduration = 60 - timenow
+        return timeduration + "s"
     }
     
     function checkAcc(input){
