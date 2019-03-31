@@ -173,6 +173,10 @@
             gameOverFunc(true);
             alert("WTH?!! You went over 1Billion!!!!")
         }
+        else if (latestNum === state.target){
+            alert("YOU WIN!!!!!!!!");
+            setcurrent(roundednum);
+        }
         else {
             setcurrent(roundednum);
         }
