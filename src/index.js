@@ -14,6 +14,12 @@
 
         //show username board
         chooseUser : true,
+
+        //Is logged in?
+        loggedin: false,
+
+        //default username
+        username: "Guest"
     }
 
     function setcurrent(newnum) {
@@ -57,15 +63,15 @@
     }
 
     function addHighScore(){
-        console.log("Score: " + checkcurrent() + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
+        console.log("Your username: " + state.username + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
         
         var domFragment = document.createDocumentFragment();
         var newscoreRow = document.createElement("TR");
         domFragment.appendChild(newscoreRow)
         
-        newscoreDataScore = document.createElement("TD");
-        newscoreDataScoreInput = document.createTextNode(checkcurrent());
-        newscoreDataScore.appendChild(newscoreDataScoreInput);
+        newscoreDataUsername = document.createElement("TD");
+        newscoreDataUsernameInput = document.createTextNode(state.username);
+        newscoreDataUsername.appendChild(newscoreDataUsernameInput);
         
         newscoreDataAcc = document.createElement("TD");
         newscoreDataAccInput = document.createTextNode(checkAcc(checkcurrent()))
@@ -75,7 +81,7 @@
         newscoreDataTimeInput = document.createTextNode(duration(state.currentTime))
         newscoreDataTime.appendChild(newscoreDataTimeInput)
         
-        newscoreRow.appendChild(newscoreDataScore) 
+        newscoreRow.appendChild(newscoreDataUsername) 
         newscoreRow.appendChild(newscoreDataAcc)
         newscoreRow.appendChild(newscoreDataTime)
         
