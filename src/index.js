@@ -15,7 +15,7 @@
         //show username board
         chooseUser : true,
 
-        //Is logged in?
+        //Is logged in? show specific users scores in special table if true
         loggedin: false,
 
         //default username
@@ -63,7 +63,7 @@
     }
 
     function addHighScore(){
-        console.log("Your username: " + state.username + ". Accuracy: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
+        console.log("Your username: " + state.username + " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
         
         var domFragment = document.createDocumentFragment();
         var newscoreRow = document.createElement("TR");
@@ -177,7 +177,7 @@
         roundednum = rndtoInt(latestNum);
         if (latestNum > 1000000000) {
             gameOverFunc(true);
-            alert("WTH?!! You went over 1Billion!!!!")
+            console.log("WTH?!! You went over 1Billion!!!!")
         }
         else if (latestNum === state.target){
             alert("YOU WIN!!!!!!!!");
