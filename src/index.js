@@ -48,6 +48,10 @@
         document.getElementById("game").style.visibility = "hidden";
     };
 
+    var hideGamePanel = function(){
+        document.getElementById("uNameDiv").style.visibility = "hidden";
+    }
+
     var checkUser = function() {
         userPicked = document.getElementById("usernameChosen").value
         if (userPicked) {
@@ -145,6 +149,7 @@
             gameOverFunc(false);
         }
 
+        hideGamePanel();
         showPanel();
     };
 
