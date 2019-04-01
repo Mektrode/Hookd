@@ -48,6 +48,17 @@
         document.getElementById("game").style.visibility = "hidden";
     };
 
+    var checkUser = function() {
+        userPicked = document.getElementById("usernameChosen").value
+        if (userPicked) {
+            state.username = userPicked
+            start();
+        }
+        else {
+            start()
+        }
+    }
+
     //return duration of time lapsed
     //should I make 60 a set variable and timenow a changing variable?
     function duration(timenow) {
