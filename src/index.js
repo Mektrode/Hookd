@@ -22,22 +22,12 @@
         username: "Guest"
     }
 
+    /*
+    DOM MANIPULATION FUNCTIONS
+    */
+   
     function setcurrent(newnum) {
         document.getElementById("currentnumber").innerHTML = newnum;
-    }
-  
-    function checkcurrent () {
-        return document.getElementById("currentnumber").innerHTML;
-    }
-
-    function getRandomNum(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-    }
-
-    function rndtoInt(rndNum) {
-        return Math.round(rndNum);
     }
 
     var toggleStartGameBtn = function(gameBtn = false){
@@ -52,16 +42,85 @@
         }
     }
 
-    var showPanel = function() {
-        document.getElementById("gameDetails").style.visibility = "visible";
-    };
+    var toggleGameDetailsPanel = function (on=false) {
+        if(on){
+            document.getElementById("gameDetails").style.visibility = "visible";
+        }
+        else if(!on) {
+            document.getElementById("gameDetails").style.visibility = "hidden";
+        }
+        else {
+            alert("Error toggleGameDetailsPanel()")
+        }
+    }
 
-    var closePanel = function() {
-        document.getElementById("gameDetails").style.visibility = "hidden";
+    var toggleTimer = function(on = false){
+        if(on){
+            state.currentTime = 60
+            document.getElementById("timer").innerHTML = state.currentTime
+            return state.timerOn = true
+        }
+        else if (!on){
+            clearInterval(timedown);  
+            state.currentTime = 0;
+            document.getElementById("timer").innerHTML = state.currentTime
+            return state.timerOn = false
+        }
+        else {
+            console.log("Error with toggleTimer()")
+        }
+    }
+
+    var toggleGameOver = function(on = false) {
+        if (on) {
+            document.getElementById("gameOver").style.visibility = "visible";
+            // saveScore() which should save to highscores object
+            alert("Saved Your Score which was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
+            addHighScore();
+            closeIt();
+        }
+        else if(!on){
+            document.getElementById("gameOver").style.visibility = "hidden";
+        }
+        else {
+            console.log("Error toggleGameOver()")
+        }
     };
+    
 
     var hideUserNamePanel = function(){
         document.getElementById("uNameDiv").style.visibility = "hidden";
+    }
+
+    function checkcurrent () {
+        //CHANGE THIS TO READ ONLY FROM THE STATE AND NOT FROM THE DOM
+        return document.getElementById("currentnumber").innerHTML;
+    }
+
+    /*
+    MATH RETURN FUNCTIONS
+    */
+
+    function getRandomNum(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    }
+
+    function rndtoInt(rndNum) {
+        return Math.round(rndNum);
+    }
+    
+    function duration(timenow) {
+        timeduration = 60 - timenow
+        return timeduration + "s"
+    }
+
+    function checkAcc(input){
+        accRatio = input/state.target
+        accuracy = accRatio * 100
+        roundedAcc = rndtoInt(accuracy)
+        return roundedAcc + "%"
     }
 
     var checkUser = function() {
@@ -77,18 +136,11 @@
 
     //return duration of time lapsed
     //should I make 60 a set variable and timenow a changing variable?
-    function duration(timenow) {
-        timeduration = 60 - timenow
-        return timeduration + "s"
-    }
     
-    function checkAcc(input){
-        accRatio = input/state.target
-        accuracy = accRatio * 100
-        roundedAcc = rndtoInt(accuracy)
-        return roundedAcc + "%"
-    }
-
+    /*
+    DOM INJECTION
+    */
+    
     function addHighScore(){
         console.log("Your username: " + state.username + " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
         
@@ -116,6 +168,10 @@
         
     }
 
+    /*
+    TIMER
+    */
+
     var timedown
     function countdown(){
         timedown = setInterval(function() {
@@ -125,24 +181,10 @@
             }
 
             if (state.currentTime === 0) {
-                switchTimer(false)
-                gameOverFunc(true);
+                toggleTimer(false)
+                toggleGameOver(true);
             }
         }, 1000)
-    }
-
-    function switchTimer(bool){
-        if(bool){
-            state.currentTime = 60
-            document.getElementById("timer").innerHTML = state.currentTime
-            return state.timerOn = true
-        }
-        else if (!bool){
-            clearInterval(timedown);  
-            state.currentTime = 0;
-            document.getElementById("timer").innerHTML = state.currentTime
-            return state.timerOn = false
-        }
     }
 
     var start = function() {
@@ -156,56 +198,42 @@
             alert("Timer is already running. Press Reset Your Progress to restart!")
         }
         else if (!state.timerOn){
-            switchTimer(true);
+            toggleTimer(true);
             countdown();
-            gameOverFunc(false);
+            toggleGameOver(false);
         }
 
         hideUserNamePanel();
         toggleStartGameBtn(true);
-        showPanel();
+        toggleGameDetailsPanel(true);
     };
 
-    //For the future, will make a variable called gameOver set as either true or false
-    //The make a funtion that returns the opposite
-    //And a watcher so that if ever the state of the gameOver changes, the UI renders automatically
+    /*
+    Application Logic (Uses DOM & Logic)
+    */
 
-    var gameOverFunc = function(bool) {
-        if (bool) {
-            document.getElementById("gameOver").style.visibility = "visible";
-            // saveScore() which should save to highscores object
-            alert("Saved Your Score which was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
-            addHighScore();
-            closeIt();
-        }
-        if(!bool){
-            document.getElementById("gameOver").style.visibility = "hidden";
-        }
-    };
-
-    var clearIt = function () {
+    var clearPanel = function () {
         setcurrent(state.startnum);
-        gameOverFunc(false);
-        switchTimer(false);
+        toggleGameOver(false);
+        toggleTimer(false);
     }
 
     var reset = function() {
-        clearIt();
+        clearPanel();
         //start timer again after everything is cleared
-        switchTimer(true);
+        toggleTimer(true);
         countdown();
     };
     
     var closeIt = function() {
-        clearIt();
-        closePanel();
+        clearPanel();
+        toggleGameDetailsPanel(false);
     };
-
 
     var checknewnumber = function(latestNum) {
         roundednum = rndtoInt(latestNum);
         if (latestNum > 1000000000) {
-            gameOverFunc(true);
+            toggleGameOver(true);
             console.log("WTH?!! You went over 1Billion!!!!")
         }
         else if (latestNum === state.target){
@@ -220,10 +248,6 @@
     var switchLogic = function(key, toSwitch) {
     
         let numbernow = toSwitch;
-
-        /*if (!timerOn){
-            switchTimer(true);
-        }*/
 
         if(numbernow === undefined) {
             /* what is the difference between:-
