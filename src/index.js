@@ -40,15 +40,27 @@
         return Math.round(rndNum);
     }
 
+    var toggleStartGameBtn = function(gameBtn = false){
+        if (gameBtn) {
+            document.getElementById("startGameBtn").style.visibility = "visible";
+        }
+        else if (!gameBtn){
+            document.getElementById("startGameBtn").style.visibility = "hidden";
+        }
+        else {
+            console.log("Error on toggleGamePanel");
+        }
+    }
+
     var showPanel = function() {
-        document.getElementById("game").style.visibility = "visible";
+        document.getElementById("gameDetails").style.visibility = "visible";
     };
 
     var closePanel = function() {
-        document.getElementById("game").style.visibility = "hidden";
+        document.getElementById("gameDetails").style.visibility = "hidden";
     };
 
-    var hideGamePanel = function(){
+    var hideUserNamePanel = function(){
         document.getElementById("uNameDiv").style.visibility = "hidden";
     }
 
@@ -149,7 +161,8 @@
             gameOverFunc(false);
         }
 
-        hideGamePanel();
+        hideUserNamePanel();
+        toggleStartGameBtn(true);
         showPanel();
     };
 

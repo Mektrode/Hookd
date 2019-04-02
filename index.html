@@ -21,7 +21,7 @@
         <li>The closest you get to your Target at the end of the timer is the score that is added to the highscores board</li>
       </ul>
     <center>
-      <h1>Quick 2aMillion</h1>
+      <h1>60s Rush</h1>
       <div>
         <h3>High Scores</h3>
         <table>
@@ -51,24 +51,27 @@
         <input id="usernameChosen" value="" placeholder="Pick a username!" />
         <button onclick="checkUser()">Submit Username</button>
       </div>
-      <div id="game" style="visibility:hidden">
+      <div id="startGameBtn" style="visibility:hidden">
           <button onclick="start()">Start</button>
           <button onclick="closeIt()">I Give Up!!!</button>
-        <p style="font-size: 20px">Your target is to get: <span id="target"></span></p>
-        
-        <button onclick="reset()">Reset Your Progress</button>
-        <div id="currentnumber" style="font: 40px bold">Placeholder Number: 1</div>
-        <br />
-        <button onclick="switchLogic(6)">Square Root</button>
-        <button onclick="switchLogic(4)">Half</button>
-        <button onclick="switchLogic(2)">-</button>
-        <button onclick="switchLogic(1)">+</button>
-        <button onclick="switchLogic(3)">Double</button>
-        <button onclick="switchLogic(5)">Square</button>
-
-        <p> You have: <span id="timer" style="font-weight:bold">60</span>'s Left!</p>
-
-        <h1 id="gameOver" style="visibility:hidden">!!!!GAME OVER!!!!</h1>
+      </div>
+      <div id="gameDetails" style="visibility:hidden">
+          <p style="font-size: 20px">Your target is to get: <span id="target"></span></p>
+      
+          <button onclick="reset()">Reset Your Progress</button>
+          <div id="currentnumber" style="font: 40px bold">Placeholder Number: 1</div>
+          <br />
+          <button onclick="switchLogic(6)">Square Root</button>
+          <button onclick="switchLogic(4)">Half</button>
+          <button onclick="switchLogic(2)">-</button>
+          <button onclick="switchLogic(1)">+</button>
+          <button onclick="switchLogic(3)">Double</button>
+          <button onclick="switchLogic(5)">Square</button>
+  
+          <p> You have: <span id="timer" style="font-weight:bold">60</span>'s Left!</p>
+  
+          <h1 id="gameOver" style="visibility:hidden">!!!!GAME OVER!!!!</h1>
+      </div>
       </div>
     </center>
   </body>
