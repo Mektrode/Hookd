@@ -25,7 +25,18 @@
     /*
     DOM MANIPULATION FUNCTIONS
     */
-   
+
+    const highscores = {
+        score: {
+            nameOfPlayer: null,
+            target: null,
+            finalScore: null,
+            accuracy: null,
+            timeTaken: null,
+        }
+    }
+
+    
     function setcurrent(newnum) {
         document.getElementById("currentnumber").innerHTML = newnum;
     }
@@ -288,6 +299,14 @@
                 return numbernow;
             case 6:
                 numbernow = Math.pow(numbernow, 1 / 2);
+                checknewnumber(numbernow);
+                return numbernow;
+            case 7:
+                numbernow = numbernow - 1000;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 8:
+                numbernow = numbernow + 1000;
                 checknewnumber(numbernow);
                 return numbernow;
             default:
