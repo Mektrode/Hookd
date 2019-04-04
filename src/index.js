@@ -30,13 +30,24 @@
 
     //  TODO =>  create a highscores store
     const highscores = {
-        score: {
-            nameOfPlayer: null,
-            target: null,
-            finalScore: null,
-            accuracy: null,
-            timeTaken: null,
-        }
+        scores: [
+            {
+                targetScore: 310183,
+                nameOfPlayer: "Johnny",
+                finalScore: 203398,
+                accuracy: null,
+                timeTaken: 60,
+                date: 12032019,
+            },
+            {
+                targetScore: 710183,
+                nameOfPlayer: "Hakim",
+                finalScore: 403398,
+                accuracy: null,
+                timeTaken: 60,
+                date: 12012019,
+            },
+        ]
     }
 
     /*
