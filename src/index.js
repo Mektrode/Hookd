@@ -177,8 +177,25 @@
     */
     
     function addHighScore(){
-        console.log("Your username: " + state.username + " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent())+ ". Time: " + duration(state.currentTime) + " seconds")
+        console.log("Your username: " + state.username + " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent()) + ". Time: " + duration(state.currentTime) + " seconds")
         
+        newScore = {
+            targetScore: state.target,
+            nameOfPlayer: state.username,
+            finalScore: state.currentNum,
+            accuracy: checkAcc(checkcurrent()),
+            timeTaken: state.timeGiven,
+            date: 12032019,
+        }
+
+        console.log("The object is")
+        console.log(newScore)
+        highscores.scores.push(newScore)
+
+        console.log("The total highscores objects are")
+        console.log(highscores.scores)
+        //clear the state
+
         var domFragment = document.createDocumentFragment();
         var newscoreRow = document.createElement("TR");
         domFragment.appendChild(newscoreRow)
