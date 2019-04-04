@@ -10,6 +10,7 @@
   => 
 */
 
+
 describe("Test the one time functions", () => {
     it("round float to nearest integer", () => {
         expect(rndtoInt(8.33211)).toEqual(8);
@@ -27,7 +28,7 @@ describe("Test the one time functions", () => {
         expect(testRnd(randomTest, passRandom)).toEqual(true);
     });
 });
-
+/*
 describe("Test the switches", () => {
     let testnum = 7;
 
@@ -62,7 +63,7 @@ describe("Test the switches", () => {
     })
 
 });
-
+*/
 //Notes:-
 
 //Make currentnum independant of switch

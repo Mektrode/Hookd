@@ -3,6 +3,8 @@
         //Users starting number
         startnum : 2,
 
+        currentNum : null,
+
         //Users timer
         currentTime : 60,
 
@@ -22,10 +24,6 @@
         username: "Guest"
     }
 
-    /*
-    DOM MANIPULATION FUNCTIONS
-    */
-
     const highscores = {
         score: {
             nameOfPlayer: null,
@@ -36,9 +34,12 @@
         }
     }
 
+    /*
+    DOM MANIPULATION FUNCTIONS
+    */
     
-    function setcurrent(newnum) {
-        document.getElementById("currentnumber").innerHTML = newnum;
+    function setcurrent() {
+        document.getElementById("currentnumber").innerHTML = state.currentNum;
     }
 
     var toggleStartGameBtn = function(gameBtn = false){
@@ -103,9 +104,12 @@
         document.getElementById("uNameDiv").style.visibility = "hidden";
     }
 
+    function checkUser(){
+        return document.getElementById("usernameChosen").value
+    }
+
     function checkcurrent () {
-        //CHANGE THIS TO READ ONLY FROM THE STATE AND NOT FROM THE DOM
-        return document.getElementById("currentnumber").innerHTML;
+        return state.currentNum;
     }
 
     /*
@@ -133,11 +137,10 @@
         roundedAcc = rndtoInt(accuracy)
         return roundedAcc + "%"
     }
-
-    var checkUser = function() {
-        userPicked = document.getElementById("usernameChosen").value
-        if (userPicked) {
-            state.username = userPicked
+    
+    var setUser = function() {
+        if (checkUser()) {
+            state.username = checkUser()
             start();
         }
         else {
@@ -203,7 +206,8 @@
         
         document.getElementById("target").innerHTML = state.target;
         
-        setcurrent(state.startnum);
+        state.currentNum = state.startnum;
+        setcurrent();
 
         if (state.timerOn){
             alert("Timer is already running. Press Reset Your Progress to restart!")
@@ -224,7 +228,8 @@
     */
 
     var clearPanel = function () {
-        setcurrent(state.startnum);
+        state.currentNum = state.startnum;
+        setcurrent();
         toggleGameOver(false);
         toggleTimer(false);
     }
@@ -249,24 +254,26 @@
         }
         else if (latestNum === state.target){
             alert("YOU WIN!!!!!!!!");
-            setcurrent(roundednum);
+            state.currentNum = roundednum;
+            setcurrent();
         }
         else {
-            setcurrent(roundednum);
+            state.currentNum = roundednum;
+            setcurrent();
         }
     };
 
-    var switchLogic = function(key, toSwitch) {
-    
-        let numbernow = toSwitch;
-
+    var switchLogic = function(key, toSwitch=7) {
+        
+        let numbernow = checkcurrent();
+        /*
         if(numbernow === undefined) {
             /* what is the difference between:-
             1) let numbernow = checkcurrent();
             2) return numbernow = checkcurrent();
             3) numbernow = checkcurrent();
             renders 3 different results.
-            */
+            
             if (isNaN(checkcurrent())){
                 setcurrent(1);
                 numbernow = checkcurrent();
@@ -275,7 +282,7 @@
                 numbernow = checkcurrent();
             }
         }
-
+        */
         switch (key) {
             case 1:
                 numbernow++;
@@ -302,10 +309,12 @@
                 checknewnumber(numbernow);
                 return numbernow;
             case 7:
+                console.log(typeof numbernow)
                 numbernow = numbernow - 1000;
                 checknewnumber(numbernow);
                 return numbernow;
             case 8:
+                console.log(typeof numbernow)
                 numbernow = numbernow + 1000;
                 checknewnumber(numbernow);
                 return numbernow;
