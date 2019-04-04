@@ -3,10 +3,14 @@
         //Users starting number
         startnum : 2,
 
+        //DOM will read this and logic will write to this variable
         currentNum : null,
 
-        //Users timer
-        currentTime : 60,
+        //Time Given
+        timeGiven : 60,
+
+        //DOM will read this and logic will write to this variable
+        currentTime : null,
 
         //Is the countdown on?
         timerOn : false,
@@ -24,6 +28,7 @@
         username: "Guest"
     }
 
+    //  TODO =>  create a highscores store
     const highscores = {
         score: {
             nameOfPlayer: null,
@@ -68,7 +73,7 @@
 
     var toggleTimer = function(on = false){
         if(on){
-            state.currentTime = 60
+            state.currentTime = state.timeGiven
             document.getElementById("timer").innerHTML = state.currentTime
             return state.timerOn = true
         }
@@ -116,21 +121,25 @@
     MATH RETURN FUNCTIONS
     */
 
+    //Return a random number between min & max
     function getRandomNum(min, max) {
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     }
 
+    //Return round to nearest whole number
     function rndtoInt(rndNum) {
         return Math.round(rndNum);
     }
-    
+
+    //return duration of time lapsed
     function duration(timenow) {
-        timeduration = 60 - timenow
+        timeduration = state.timeGiven - timenow
         return timeduration + "s"
     }
 
+    //Check accuracy of final score and return % of accuracy
     function checkAcc(input){
         accRatio = input/state.target
         accuracy = accRatio * 100
@@ -138,19 +147,20 @@
         return roundedAcc + "%"
     }
     
+    //Set user for game session. 
     var setUser = function() {
+        //If user is inputed overwrite state.username from Guest to the chosen username.
         if (checkUser()) {
             state.username = checkUser()
             start();
         }
+        //Else start() with Guest as default.
         else {
             start()
         }
     }
 
-    //return duration of time lapsed
-    //should I make 60 a set variable and timenow a changing variable?
-    
+
     /*
     DOM INJECTION
     */
@@ -309,12 +319,10 @@
                 checknewnumber(numbernow);
                 return numbernow;
             case 7:
-                console.log(typeof numbernow)
                 numbernow = numbernow - 1000;
                 checknewnumber(numbernow);
                 return numbernow;
             case 8:
-                console.log(typeof numbernow)
                 numbernow = numbernow + 1000;
                 checknewnumber(numbernow);
                 return numbernow;
