@@ -184,8 +184,8 @@
             nameOfPlayer: state.username,
             finalScore: state.currentNum,
             accuracy: checkAcc(checkcurrent()),
-            timeTaken: state.timeGiven,
-            date: 12032019,
+            timeTaken: duration(state.currentTime),
+            date: "custom object",
         }
 
         console.log("The object is")
