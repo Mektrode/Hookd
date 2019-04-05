@@ -185,7 +185,7 @@
             finalScore: state.currentNum,
             accuracy: checkAcc(checkcurrent()),
             timeTaken: duration(state.currentTime),
-            date: "custom object",
+            date: new Date(),
         }
 
         console.log("The object is")
