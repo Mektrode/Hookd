@@ -37,7 +37,7 @@
                 finalScore: 203398,
                 accuracy: null,
                 timeTaken: 60,
-                date: 12032019,
+                date: "Thu 04 Apr 2019",
             },
             {
                 targetScore: 710183,
@@ -45,7 +45,7 @@
                 finalScore: 403398,
                 accuracy: null,
                 timeTaken: 60,
-                date: 12012019,
+                date: "Thu 04 Apr 2019",
             },
         ]
     }
