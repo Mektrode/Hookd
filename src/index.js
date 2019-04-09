@@ -144,6 +144,11 @@
         return Math.round(rndNum);
     }
 
+    //Round to 2 dp
+    function rndDownInt(toRnd) {
+        return Math.floor(toRnd)
+    }
+
     //return duration of time lapsed
     function duration(timenow) {
         timeduration = state.timeGiven - timenow
@@ -154,7 +159,7 @@
     function checkAcc(input){
         accRatio = input/state.target
         accuracy = accRatio * 100
-        roundedAcc = rndtoInt(accuracy)
+        roundedAcc = rndDownInt(accuracy)
         return roundedAcc + "%"
     }
     
@@ -340,6 +345,7 @@
                 return numbernow;
             case 5:
                 numbernow = Math.pow(numbernow, 2);
+                //Add IF square increases over the limit Disable this action
                 checknewnumber(numbernow);
                 return numbernow;
             case 6:
@@ -352,6 +358,14 @@
                 return numbernow;
             case 8:
                 numbernow = numbernow + 1000;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 9:
+                numbernow = numbernow - 10000;
+                checknewnumber(numbernow);
+                return numbernow;
+            case 10:
+                numbernow = numbernow + 10000;
                 checknewnumber(numbernow);
                 return numbernow;
             default:
