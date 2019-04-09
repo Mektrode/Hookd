@@ -18,6 +18,8 @@
         //Target Number
         target : 100,
 
+        accuracyState: null,
+
         //show username board
         chooseUser : true,
 
@@ -149,6 +151,10 @@
         return Math.floor(toRnd)
     }
 
+    function updateAccuracy (newAcc) {
+        state.accuracyState = newAcc;
+    }
+
     //return duration of time lapsed
     function duration(timenow) {
         timeduration = state.timeGiven - timenow
@@ -158,6 +164,7 @@
     //Check accuracy of final score and return % of accuracy
     function checkAcc(input){
         accRatio = input/state.target
+        updateAccuracy(accRatio);
         accuracy = accRatio * 100
         roundedAcc = rndDownInt(accuracy)
         return roundedAcc + "%"
