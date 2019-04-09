@@ -147,12 +147,16 @@
     }
 
     //Round to 2 dp
+    function rndTo2dp(rndNum){
+        return Math.round(rndNum * 100) / 100
+    }
+
     function rndDownInt(toRnd) {
         return Math.floor(toRnd)
     }
 
     function updateAccuracy (newAcc) {
-        state.accuracyState = newAcc;
+        state.accuracyState = rndTo2dp(newAcc);
     }
 
     //return duration of time lapsed
@@ -196,6 +200,7 @@
             nameOfPlayer: state.username,
             finalScore: state.currentNum,
             accuracy: checkAcc(checkcurrent()),
+            accuracyState: state.accuracyState,
             timeTaken: duration(state.currentTime),
             date: new Date().toDateString(),
         }
