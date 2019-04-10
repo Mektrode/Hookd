@@ -39,16 +39,18 @@
                 targetScore: 310183,
                 nameOfPlayer: "Johnny",
                 finalScore: 203398,
-                accuracy: null,
-                timeTaken: 60,
+                //change application to make accuracy a number only and add % and s using JSX
+                accuracy: "64%",
+                timeTaken: "60s",
                 date: "Thu 04 Apr 2019",
             },
             {
                 targetScore: 710183,
                 nameOfPlayer: "Hakim",
                 finalScore: 403398,
-                accuracy: null,
-                timeTaken: 60,
+                //change application to make accuracy a number only and add % and s using JSX
+                accuracy: "57%",
+                timeTaken: "60s",
                 date: "Thu 04 Apr 2019",
             },
         ]
@@ -274,11 +276,16 @@
         console.log(highscores.scores)
     
         //clear the state
-    
-        addNewScoreToDOM(arg)
-        //Update DOM function
+        
+        refreshScores();
     }
     
+    function refreshScores(){
+        const anotherScore = highscores.scores.map(score => {
+            addNewScoreToDOM(score)
+        })
+    }
+
     function addNewScoreToDOM (arg) {
         var domFragment = document.createDocumentFragment();
         var newscoreRow = document.createElement("TR");
@@ -343,6 +350,7 @@
         }
 
         hideUserNamePanel();
+        refreshScores();
         toggleStartGameBtn(true);
         toggleGameDetailsPanel(true);
     };
