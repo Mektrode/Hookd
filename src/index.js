@@ -1,3 +1,5 @@
+    //import * as pubScore from 'highscores.js'
+    //import * as calc from 'src/calculations.js'
 
     const state = {
         //Users starting number
@@ -106,7 +108,7 @@
             document.getElementById("gameOver").style.visibility = "visible";
             // saveScore() which should save to highscores object
             alert("Saved Your Score which was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
-            addHighScore();
+            compileScore();
             closeIt();
         }
         else if(!on){
@@ -192,6 +194,7 @@
     DOM INJECTION
     */
     
+    /*
     function addHighScore(){
         console.log("Your username: " + state.username + " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent()) + ". Time: " + duration(state.currentTime) + " seconds")
         
@@ -235,6 +238,72 @@
         
         document.getElementById("scores").appendChild(newscoreRow);
         
+    }*/
+
+    var compileScore = function(){
+        newScore = {
+            targetScore: state.target,
+            nameOfPlayer: state.username,
+            finalScore: state.currentNum,
+            accuracy: checkAcc(checkcurrent()),
+            timeTaken: duration(state.currentTime),
+            date: new Date().toDateString(),
+        }
+        addHighScore(newScore)
+    }
+
+    function addHighScore(arg){
+        console.log("Before: Object recieved as Argument === Your username: " + arg.nameOfPlayer); //+ " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent()) + ". Time: " + duration(state.currentTime) + " seconds")
+        console.log("Date registered is " + arg.date)
+        /*
+        newScore = {
+            targetScore: state.target,
+            nameOfPlayer: state.username,
+            finalScore: state.currentNum,
+            accuracy: checkAcc(checkcurrent()),
+            timeTaken: duration(state.currentTime),
+            date: new Date().toDateString(),
+        }
+        */
+    
+        console.log("The object is")
+        console.log(arg)
+        highscores.scores.push(arg)
+    
+        console.log("The total highscores objects are")
+        console.log(highscores.scores)
+    
+        //clear the state
+    
+        addNewScoreToDOM(arg)
+        //Update DOM function
+    }
+    
+    function addNewScoreToDOM (arg) {
+        var domFragment = document.createDocumentFragment();
+        var newscoreRow = document.createElement("TR");
+        domFragment.appendChild(newscoreRow)
+        
+        newscoreDataUsername = document.createElement("TD");
+        newscoreDataUsernameInput = document.createTextNode(arg.nameOfPlayer);
+        newscoreDataUsername.appendChild(newscoreDataUsernameInput);
+        
+        newscoreDataAcc = document.createElement("TD");
+        newscoreDataAccInput = document.createTextNode(arg.accuracy)
+        newscoreDataAcc.appendChild(newscoreDataAccInput)
+    
+        newscoreDataTime = document.createElement("TD");
+        newscoreDataTimeInput = document.createTextNode(arg.timeTaken)
+        newscoreDataTime.appendChild(newscoreDataTimeInput)
+        
+        /*
+        Add new TD for more comprehesive stuff
+        */
+        newscoreRow.appendChild(newscoreDataUsername) 
+        newscoreRow.appendChild(newscoreDataAcc)
+        newscoreRow.appendChild(newscoreDataTime)
+        
+        document.getElementById("scores").appendChild(newscoreRow);
     }
 
     /*
