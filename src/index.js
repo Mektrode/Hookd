@@ -64,6 +64,18 @@
         document.getElementById("currentnumber").innerHTML = state.currentNum;
     }
 
+    var toggleHighscoresTable = function(show = false){
+        if (show) {
+            document.getElementById("highscoresTable").style.visibility = "visible";
+        }
+        else if (!show){
+            document.getElementById("highscoresTable").style.visibility = "hidden";
+        }
+        else {
+            console.log("Error on toggleHighscoresTable");
+        }
+    }
+
     var toggleStartGameBtn = function(gameBtn = false){
         if (gameBtn) {
             document.getElementById("startGameBtn").style.visibility = "visible";
