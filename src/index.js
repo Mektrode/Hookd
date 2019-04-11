@@ -124,9 +124,11 @@
             alert("Saved Your Score which was " + checkcurrent() + " in " + duration(state.currentTime) + " seconds")
             compileScore();
             closeIt();
+            toggleHighscoresTable(true)
         }
         else if(!on){
             document.getElementById("gameOver").style.visibility = "hidden";
+            toggleHighscoresTable(false)
         }
         else {
             console.log("Error toggleGameOver()")
