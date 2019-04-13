@@ -7,9 +7,12 @@
     "start": "parcel index.html --open",
     "build": "parcel build index.html"
   },
-  "dependencies": {},
+  "dependencies": {
+    "src": "^1.1.2"
+  },
   "devDependencies": {
     "@babel/core": "7.2.0",
+    "nodemon": "^1.18.9",
     "parcel-bundler": "^1.6.1"
   },
   "keywords": []

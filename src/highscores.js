@@ -30,6 +30,7 @@ function refreshScores(){
 function addHighScore(arg){
     console.log("Before: Object recieved as Argument === Your username: " + state.username + " and your score is " + checkcurrent() + ". Thus your accuracy is: " +  checkAcc(checkcurrent()) + ". Time: " + duration(state.currentTime) + " seconds")
     
+    /*
     newScore = {
         targetScore: state.target,
         nameOfPlayer: state.username,
@@ -38,10 +39,11 @@ function addHighScore(arg){
         timeTaken: duration(state.currentTime),
         date: new Date().toDateString(),
     }
+    */
 
     console.log("The object is")
-    console.log(newScore)
-    highscores.scores.push(newScore)
+    console.log(arg.newScore)
+    highscores.scores.push(arg.newScore)
 
     console.log("The total highscores objects are")
     console.log(highscores.scores)
@@ -76,5 +78,4 @@ function addNewScoreToDOM (arg) {
     newscoreRow.appendChild(newscoreDataTime)
     
     document.getElementById("scores").appendChild(newscoreRow);
-    
 }

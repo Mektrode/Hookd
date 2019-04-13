@@ -1,5 +1,5 @@
     //import * as pubScore from 'highscores.js'
-    //import * as calc from 'src/calculations.js'
+    //import * as calc from './calculations.js'
 
     const state = {
         //Users starting number
@@ -150,7 +150,7 @@
 
     /*
     MATH RETURN FUNCTIONS
-    */
+    
 
     //Return a random number between min & max
     function getRandomNum(min, max) {
@@ -172,7 +172,7 @@
     function rndDownInt(toRnd) {
         return Math.floor(toRnd)
     }
-
+    */
     function updateAccuracy (newAcc) {
         state.accuracyState = rndTo2dp(newAcc);
     }
