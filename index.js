@@ -1,5 +1,5 @@
     //import * as pubScore from 'highscores.js'
-    //import * as calc from './calculations.js'
+    import * as calc from './calculations.js'
 
     const state = {
         //Users starting number
@@ -148,8 +148,8 @@
         return state.currentNum;
     }
 
-    /*
-    MATH RETURN FUNCTIONS
+    
+    //MATH RETURN FUNCTIONS
     
 
     //Return a random number between min & max
@@ -158,7 +158,7 @@
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
     }
-
+    /*
     //Return round to nearest whole number
     function rndtoInt(rndNum) {
         return Math.round(rndNum);
@@ -347,7 +347,7 @@
     }
 
     var start = function() {
-        state.target = getRandomNum(2, 999999);
+        state.target = calc.getRandomNum(2, 999999);
         
         document.getElementById("target").innerHTML = state.target;
         
