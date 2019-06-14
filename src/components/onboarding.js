@@ -6,6 +6,7 @@ const Welcome = () => {
     <div>
       <h1>Welcome to Hookd</h1>
       <p>Prepare to challenge your mental arithmatics and test your luck</p>
+      <button>Next</button>
     </div>
   );
 };
@@ -21,6 +22,7 @@ const Rules = () => {
           You MUST NOT go over more than double your Target or you will lose
         </li>
       </ol>
+      <button>Next</button>
     </div>
   );
 };
@@ -30,6 +32,7 @@ export default function onboarding() {
     <div className="line onboarding">
       <Welcome />
       <Rules />
+      <button className="start">Start</button>
     </div>
   );
 }
