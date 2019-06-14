@@ -1,11 +1,12 @@
 import React from "react";
 import "./global.css";
 import ScoreList from "./components/highscores";
+import Onboarding from "./components/onboarding";
 
 function App() {
   return (
     <div className="App">
-      <h1>WELCOME</h1>
+      <Onboarding />
       <ScoreList />
     </div>
   );

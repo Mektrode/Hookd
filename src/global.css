@@ -14,12 +14,21 @@ a {
   text-decoration: none;
 }
 
-#scores {
+.line {
   border: 1px solid black;
-  width: 30%;
-  margin-left: 35%;
+}
+
+.onboarding {
+  width: 50%;
+  margin-left: 25%;
   padding: 10px;
 }
 
-#score-card {
+.rules {
+  margin-left: 5%;
+}
+.scores {
+  width: 30%;
+  margin-left: 35%;
+  padding: 10px;
 }
