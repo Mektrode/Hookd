@@ -1,5 +1,6 @@
 import React from "react";
 import highscores from "../lib/scores";
+import "./../global.css";
 
 const Score = props => {
   return (
@@ -16,10 +17,11 @@ const Score = props => {
 
 export default function List() {
   return (
-    <div>
+    <div id="scores">
       <h3>Highscores:</h3>
       {highscores.scores.map(score => (
         <Score
+          key={score.id}
           name={score.nameOfPlayer}
           accuracy={score.accuracy}
           date={score.date}

@@ -13,3 +13,13 @@ a {
   color: #333;
   text-decoration: none;
 }
+
+#scores {
+  border: 1px solid black;
+  width: 30%;
+  margin-left: 35%;
+  padding: 10px;
+}
+
+#score-card {
+}

@@ -1,6 +1,7 @@
 const highscores = {
   scores: [
     {
+      id: 100,
       targetScore: 310183,
       nameOfPlayer: "Johnny",
       finalScore: 203398,
@@ -9,6 +10,7 @@ const highscores = {
       date: "Thu 04 Apr 2019"
     },
     {
+      id: 101,
       targetScore: 710183,
       nameOfPlayer: "Hakim",
       finalScore: 403398,
