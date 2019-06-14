@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Test from "./components/highscores";
+import ScoreList from "./components/highscores";
 
 function App() {
   return (
     <div className="App">
       <h1>LETS GET READY TO RUMBLEEE</h1>
-      <Test />
+      <ScoreList />
     </div>
   );
 }
