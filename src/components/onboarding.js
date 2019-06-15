@@ -1,12 +1,22 @@
 import React from "react";
 import "./../global.css";
 
+//re-usable and will handle routing
+const BackNext = () => {
+  return (
+    <div className="back-next">
+      <button>Back</button>
+      <button>Next</button>
+    </div>
+  );
+};
+
 const Welcome = () => {
   return (
     <div>
       <h1>Welcome to Hookd</h1>
       <p>Prepare to challenge your mental arithmatics and test your luck</p>
-      <button>Next</button>
+      <BackNext />
     </div>
   );
 };
@@ -22,7 +32,7 @@ const Rules = () => {
           You MUST NOT go over more than double your Target or you will lose
         </li>
       </ol>
-      <button>Next</button>
+      <BackNext />
     </div>
   );
 };
