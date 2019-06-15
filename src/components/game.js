@@ -2,12 +2,20 @@ import React from "react";
 
 /*
 Components:-
-- Countdown to start
+- Countdown to start //not neccessary
 - Timer
 - Target/Current Number & % away
 - Buttons Grid
 - Gamer Over Pop-Up/Modal
 */
+
+const Timer = () => {
+  return (
+    <div className="line timer">
+      <span>01:00</span>
+    </div>
+  );
+};
 
 const ButtonsGrid = () => {
   return (
@@ -32,6 +40,7 @@ export default function Game() {
   return (
     <div className="line main-comp">
       <h1>Game</h1>
+      <Timer />
       <ButtonsGrid />
     </div>
   );

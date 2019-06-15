@@ -38,6 +38,13 @@ a {
   padding: 5px;
 }
 
+.timer {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bolder;
+  margin: 10px;
+}
+
 .buttons-grid {
   height: 100%;
 }
