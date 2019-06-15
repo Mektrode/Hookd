@@ -8,10 +8,31 @@ Components:-
 - Buttons Grid
 - Gamer Over Pop-Up/Modal
 */
+
+const ButtonsGrid = () => {
+  return (
+    <div className="buttons-grid">
+      <div className="buttons-container">
+        <div className="b1" />
+        <div className="b2" />
+        <div className="b3" />
+        <div className="b4" />
+        <div className="b5" />
+        <div className="b6" />
+        <div className="b7" />
+        <div className="b8" />
+        <div className="b9" />
+        <div className="reset" />
+      </div>
+    </div>
+  );
+};
+
 export default function Game() {
   return (
     <div className="line main-comp">
       <h1>Game</h1>
+      <ButtonsGrid />
     </div>
   );
 }
