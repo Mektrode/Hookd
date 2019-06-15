@@ -25,9 +25,9 @@ const PickButtons = () => {
 };
 */
 
-export default function setup() {
+export default function Setup() {
   return (
-    <div className="line onboarding">
+    <div className="line main-comp">
       <PickName />
     </div>
   );

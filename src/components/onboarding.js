@@ -29,7 +29,7 @@ const Rules = () => {
 
 export default function onboarding() {
   return (
-    <div className="line onboarding">
+    <div className="line main-comp">
       <Welcome />
       <Rules />
       <button className="start">Start</button>
