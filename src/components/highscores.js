@@ -17,7 +17,7 @@ const Score = props => {
 
 export default function List() {
   return (
-    <div className="scores line">
+    <div className="main-comp line">
       <h3>Highscores:</h3>
       {highscores.scores.map(score => (
         <Score

@@ -19,8 +19,8 @@ a {
 }
 
 .main-comp {
-  width: 50%;
-  margin-left: 25%;
+  width: 90%;
+  margin-left: 5%;
   padding: 10px;
   margin-bottom: 10%;
 }
@@ -28,11 +28,7 @@ a {
 .rules {
   margin-left: 5%;
 }
-.scores {
-  width: 30%;
-  margin-left: 35%;
-  padding: 10px;
-}
+
 .start {
   margin-left: 80%;
   padding: 5px;
