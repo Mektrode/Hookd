@@ -41,9 +41,30 @@ a {
   margin: 10px;
 }
 
-.buttons-grid {
-  height: 100%;
+.meter-container {
+  display: grid;
+  padding: 10px;
+  height: 100px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "meter1" "meter2" "meter3";
 }
+
+.meter1 {
+  grid-area: meter1;
+}
+
+.meter2 {
+  grid-area: meter2;
+}
+
+.meter3 {
+  grid-area: meter3;
+}
+
+/*
+BUTTONS GRID
+*/
 
 .buttons-container * {
   border: 1px solid purple;

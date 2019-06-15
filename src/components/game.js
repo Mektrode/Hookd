@@ -17,6 +17,18 @@ const Timer = () => {
   );
 };
 
+const Meter = () => {
+  return (
+    <div className="meter-grid line timer">
+      <div className="meter-container">
+        <div className="meter1">Target: 12189384123</div>
+        <div className="meter2">34%</div>
+        <div className="meter3">Current: 190814</div>
+      </div>
+    </div>
+  );
+};
+
 const ButtonsGrid = () => {
   return (
     <div className="buttons-grid">
@@ -41,6 +53,7 @@ export default function Game() {
     <div className="line main-comp">
       <h1>Game</h1>
       <Timer />
+      <Meter />
       <ButtonsGrid />
     </div>
   );
