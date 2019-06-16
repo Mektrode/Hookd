@@ -17,13 +17,22 @@ const Timer = () => {
   );
 };
 
+function GameOver() {
+  return (
+    <div className="line main-comp">
+      <h1>Times Up!!!</h1>
+      <h3>Your score was:-</h3>
+    </div>
+  );
+}
+
 const Meter = () => {
   return (
     <div className="meter-grid line timer">
       <div className="meter-container">
         <div className="meter1">Target: 12189384123</div>
         <div className="meter2">34%</div>
-        <div className="meter3">Current: 190814</div>
+        <div className="meter3">You: 190814</div>
       </div>
     </div>
   );
@@ -75,6 +84,7 @@ export default function Game() {
       <Timer />
       <Meter />
       <ButtonsGrid />
+      <GameOver />
     </div>
   );
 }
