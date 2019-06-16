@@ -46,7 +46,7 @@ const ButtonsGrid = () => {
           <button className="game-button">-1</button>
         </div>
         <div className="b5">
-          <button className="game-button">???</button>
+          <button className="game-button">Square</button>
         </div>
         <div className="b6">
           <button className="game-button">+1</button>
