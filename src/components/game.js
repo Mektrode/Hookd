@@ -33,16 +33,36 @@ const ButtonsGrid = () => {
   return (
     <div className="buttons-grid">
       <div className="buttons-container">
-        <div className="b1" />
-        <div className="b2" />
-        <div className="b3" />
-        <div className="b4" />
-        <div className="b5" />
-        <div className="b6" />
-        <div className="b7" />
-        <div className="b8" />
-        <div className="b9" />
-        <div className="reset" />
+        <div className="b1">
+          <button className="game-button">-1K</button>
+        </div>
+        <div className="b2">
+          <button className="game-button">x2</button>
+        </div>
+        <div className="b3">
+          <button className="game-button">+1K</button>
+        </div>
+        <div className="b4">
+          <button className="game-button">-1</button>
+        </div>
+        <div className="b5">
+          <button className="game-button">???</button>
+        </div>
+        <div className="b6">
+          <button className="game-button">+1</button>
+        </div>
+        <div className="b7">
+          <button className="game-button">-10K</button>
+        </div>
+        <div className="b8">
+          <button className="game-button">/2</button>
+        </div>
+        <div className="b9">
+          <button className="game-button">+10K</button>
+        </div>
+        <div className="reset">
+          <button className="game-button">RESET</button>
+        </div>
       </div>
     </div>
   );
