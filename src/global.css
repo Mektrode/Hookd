@@ -89,7 +89,7 @@ BUTTONS GRID
   height: 350px;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 0.6fr;
-  grid-template-areas: "b1 b2 b3" "b4 b5 b6" "b7 b8 b9" "reset reset reset";
+  grid-template-areas: "b1 b2 b3" "b4 b5 b6" "b7 b8 b9" "reset reset start";
 }
 
 /*
@@ -132,6 +132,12 @@ Add Undo Button next to RESET btn to take 1.5fr of total 3 coloumn each
   grid-area: b9;
 }
 
-.reset {
+.reset-div {
   grid-area: reset;
 }
+
+/*
+.start-div {
+  grid-area: start;
+}
+*/

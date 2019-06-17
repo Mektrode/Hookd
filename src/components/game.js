@@ -2,7 +2,7 @@ import React from "react";
 
 /*
 Components:-
-- Countdown to start //not neccessary
+- Countdown to start //not neccessary yet
 - Timer
 - Target/Current Number & % away
 - Buttons Grid
@@ -69,8 +69,11 @@ const ButtonsGrid = () => {
         <div className="b9">
           <button className="game-button">+10K</button>
         </div>
-        <div className="reset">
+        <div className="reset-div">
           <button className="game-button">RESET</button>
+        </div>
+        <div className="start-div">
+          <button className="game-button">START</button>
         </div>
       </div>
     </div>
