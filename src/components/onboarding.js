@@ -22,14 +22,15 @@ if localstorage onboarding NOT true
 */
 
 export default function Onboarding() {
-  const [setup, setSetup] = useState("");
+  const [username, changeUsername] = useState("");
+  const [onboardingDone, setonboardingDone] = useState(false);
 
   return (
     <div className="line main-comp">
-      <h1>Hello {setup}</h1>
+      <h1>Hello {username}</h1>
       <Welcome />
       <Rules />
-      <ChooseName username={setup} setUsername={setSetup} />
+      <ChooseName username={username} setUsername={changeUsername} />
       <button className="start">Start</button>
     </div>
   );
