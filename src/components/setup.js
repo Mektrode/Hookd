@@ -4,6 +4,10 @@ import "./../global.css";
 const PickName = () => {
   const [username, setUsername] = useState("");
 
+  const newUser = newName => {
+    setUsername(newName);
+  };
+
   const changeUsername = e => {
     e.preventDefault();
     console.log({ username });
@@ -15,7 +19,7 @@ const PickName = () => {
     <div>
       <h3>What would you like to be called?</h3>
       <form onSubmit={changeUsername}>
-        <input value={username} onChange={e => setUsername(e.target.value)} />
+        <input value={username} onChange={e => newUser(e.target.value)} />
         <button>Next</button>
       </form>
 
