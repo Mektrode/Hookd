@@ -47,23 +47,25 @@ const BackNext = () => {
 };
 
 const ChooseName = props => {
-  const newUser = newName => {
-    props.setUsername(newName);
-  };
+  //local state username to control form
+  const [uname, setUname] = useState("");
 
-  /*
-    const changeUsername = e => {
-      e.preventDefault();
-      console.log({ username });
-      setUsername("");
-    };
-    */
+  const handleChange = e => {
+    setUname(e.target.value);
+  };
+  //Push local state up to parent component then clear local state
+  const submitName = e => {
+    e.preventDefault();
+    console.log({ uname });
+    props.setUsername(uname);
+    setUname("");
+  };
 
   return (
     <div>
       <h3>What would you like to be called?</h3>
-      <form>
-        <input value={props.username} onChange={e => newUser(e.target.value)} />
+      <form onSubmit={submitName}>
+        <input value={uname} onChange={handleChange} />
         <button>Next</button>
       </form>
 
