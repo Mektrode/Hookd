@@ -44,8 +44,11 @@ export default function Onboarding() {
         setscreen3(!screen3);
         setscreen4(!screen4);
         break;
+      case "resetME":
+        setscreen1(true);
+        setscreen4(false);
       default:
-        throw new Error(); //console.log("Neither of them switched");
+        console.log("Default triggered");
         break;
     }
   }
@@ -56,6 +59,8 @@ export default function Onboarding() {
   const screen2Tigger = () => customReducer("activateScreen3");
 
   const screen3Tigger = () => customReducer("activateScreen4");
+
+  const resetTrigger = () => customReducer("resetME");
 
   return (
     <div className="line main-comp">
@@ -72,7 +77,7 @@ export default function Onboarding() {
           rightAction={screen3Tigger}
         />
       )}
-      {!screen4 || <Loading username={username} />}
+      {!screen4 || <Loading username={username} leftAction={resetTrigger} />}
     </div>
   );
 }
@@ -96,9 +101,9 @@ const BackNext = props => {
 };
 
 const Loading = props => {
-  function resetIT() {
-    console.log("Start Over");
-  }
+  //   function resetIT() {
+  //     console.log("Start Over");
+  //   }
   return (
     <div className="loading">
       <h1 className="main-title">Loading</h1>
@@ -106,7 +111,7 @@ const Loading = props => {
         Just hang on a sec {props.username}. <br />
         We're preparing the game for you!!!
       </p>
-      <BackNext left="reset" leftAction={resetIT} />
+      <BackNext left="reset" leftAction={props.leftAction} />
     </div>
   );
 };
