@@ -71,6 +71,23 @@ input[type="text"] {
   margin: 10px;
   padding: 10px;
 }
+
+/* Specific classes */
+.back-next {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "left left . . right right";
+}
+
+.left-btn {
+  grid-area: left;
+}
+
+.right-btn {
+  grid-area: right;
+}
+
 .rules {
   margin-left: 5%;
 }

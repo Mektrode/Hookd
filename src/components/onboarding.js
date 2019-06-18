@@ -31,17 +31,16 @@ export default function Onboarding() {
       <Welcome />
       <Rules />
       <ChooseName username={username} setUsername={changeUsername} />
-      <button className="start btn2">Start</button>
     </div>
   );
 }
 
 //re-usable and will handle routing
-const BackNext = () => {
+const BackNext = props => {
   return (
     <div className="back-next">
-      <button className="btn2">Back</button>
-      <button className="btn2">Next</button>
+      {!props.left || <button className="btn2 left-btn">{props.left}</button>}
+      {!props.left || <button className="btn2 right-btn">{props.right}</button>}
     </div>
   );
 };
@@ -68,10 +67,8 @@ const ChooseName = props => {
         <input type="text" value={uname} onChange={handleChange} />
         <button className="btn1">Yes</button>
       </form>
-
       <br />
-      <br />
-      <button className="btn2">Start as Guest</button>
+      <BackNext right="Guest Mode" />
     </div>
   );
 };
@@ -83,7 +80,7 @@ const Welcome = () => {
       <p className="text-body">
         Prepare to challenge your mental arithmatics and test your luck
       </p>
-      <BackNext />
+      <BackNext left="Back" right="Next" />
     </div>
   );
 };
@@ -99,7 +96,7 @@ const Rules = () => {
           You MUST NOT go over more than double your Target or you will lose
         </li>
       </ol>
-      <BackNext />
+      <BackNext left="Back" right="Next" />
     </div>
   );
 };
