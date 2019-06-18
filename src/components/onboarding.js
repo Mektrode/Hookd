@@ -27,11 +27,11 @@ export default function Onboarding() {
 
   return (
     <div className="line main-comp">
-      <h1>Hello {username}</h1>
+      <h1 className="main-title">Welcome {username}</h1>
       <Welcome />
       <Rules />
       <ChooseName username={username} setUsername={changeUsername} />
-      <button className="start">Start</button>
+      <button className="start btn2">Start</button>
     </div>
   );
 }
@@ -40,8 +40,8 @@ export default function Onboarding() {
 const BackNext = () => {
   return (
     <div className="back-next">
-      <button>Back</button>
-      <button>Next</button>
+      <button className="btn2">Back</button>
+      <button className="btn2">Next</button>
     </div>
   );
 };
@@ -63,15 +63,15 @@ const ChooseName = props => {
 
   return (
     <div>
-      <h3>What would you like to be called?</h3>
+      <h3 className="text-title">What would you like to be called?</h3>
       <form onSubmit={submitName}>
-        <input value={uname} onChange={handleChange} />
-        <button>Next</button>
+        <input type="text" value={uname} onChange={handleChange} />
+        <button className="btn1">Yes</button>
       </form>
 
       <br />
       <br />
-      <button>Start as Guest</button>
+      <button className="btn2">Start as Guest</button>
     </div>
   );
 };
@@ -79,8 +79,10 @@ const ChooseName = props => {
 const Welcome = () => {
   return (
     <div>
-      <h1>Welcome to Hookd</h1>
-      <p>Prepare to challenge your mental arithmatics and test your luck</p>
+      <h3 className="text-title">Prepare Yourself</h3>
+      <p className="text-body">
+        Prepare to challenge your mental arithmatics and test your luck
+      </p>
       <BackNext />
     </div>
   );
@@ -89,8 +91,8 @@ const Welcome = () => {
 const Rules = () => {
   return (
     <div className="rules-card">
-      <h3>Game Rules</h3>
-      <ol className="rules">
+      <h3 className="text-title">Game Rules</h3>
+      <ol className="rules text-body">
         <li>You will be given a target between 1 and 1MIL</li>
         <li>You have 60 seconds to hit your target</li>
         <li>

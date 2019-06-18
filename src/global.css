@@ -25,6 +25,52 @@ a {
   margin-bottom: 10%;
 }
 
+input[type="text"] {
+  padding: 12px;
+  font-size: 16px;
+}
+
+.btn1 {
+  background-color: #9c2692; /* Green */
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn2 {
+  background-color: #fa44eb; /* Green */
+  border: none;
+  color: white;
+  padding: 7px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.main-title {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 5px;
+  text-align: center;
+}
+
+.text-title {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 10px;
+  padding: 10px;
+}
+
+.text-body {
+  font-family: "Roboto", sans-serif;
+  margin: 10px;
+  padding: 10px;
+}
 .rules {
   margin-left: 5%;
 }
