@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./../global.css";
+import { async } from "q";
 
 /*
 Onboarding Architecture HOC?
@@ -44,7 +45,7 @@ export default function Onboarding() {
         setscreen3(!screen3);
         setscreen4(!screen4);
         break;
-      case "resetME":
+      case "resetBoarding":
         setscreen1(true);
         setscreen4(false);
       default:
@@ -60,7 +61,7 @@ export default function Onboarding() {
 
   const screen3Tigger = () => customReducer("activateScreen4");
 
-  const resetTrigger = () => customReducer("resetME");
+  const resetTrigger = () => customReducer("resetBoarding");
 
   return (
     <div className="line main-comp">
@@ -145,7 +146,10 @@ const ChooseName = props => {
         left="Back"
         leftAction={props.leftAction}
         right="Guest Mode"
-        rightAction={props.rightAction}
+        rightAction={async () => {
+          await props.setUsername(uname);
+          return props.rightAction();
+        }}
       />
     </div>
   );
