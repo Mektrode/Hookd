@@ -72,6 +72,9 @@ input[type="text"] {
   padding: 10px;
 }
 
+.centre {
+  text-align: center;
+}
 /* Specific classes */
 .back-next {
   display: grid;

@@ -23,24 +23,90 @@ if localstorage onboarding NOT true
 
 export default function Onboarding() {
   const [username, changeUsername] = useState("");
-  const [onboardingDone, setonboardingDone] = useState(false);
+  //const [onboarded, setonboarded] = useState(false);
+  const [screen1, setscreen1] = useState(true);
+  const [screen2, setscreen2] = useState(false);
+  const [screen3, setscreen3] = useState(false);
+  const [screen4, setscreen4] = useState(false);
+
+  function customReducer(action) {
+    switch (action) {
+      case "activateScreen2":
+        setscreen1(!screen1);
+        setscreen2(!screen2);
+        console.log("Screen 2 activated");
+        break;
+      case "activateScreen3":
+        setscreen2(!screen2);
+        setscreen3(!screen3);
+        break;
+      case "activateScreen4":
+        setscreen3(!screen3);
+        setscreen4(!screen4);
+        break;
+      default:
+        throw new Error(); //console.log("Neither of them switched");
+        break;
+    }
+  }
+  //const [state, dispatch] = useReducer(reducer, init);
+
+  const screen1Tigger = () => customReducer("activateScreen2");
+
+  const screen2Tigger = () => customReducer("activateScreen3");
+
+  const screen3Tigger = () => customReducer("activateScreen4");
 
   return (
     <div className="line main-comp">
       <h1 className="main-title">Welcome {username}</h1>
-      <Welcome />
-      <Rules />
-      <ChooseName username={username} setUsername={changeUsername} />
+      {!screen1 || <Welcome rightAction={screen1Tigger} />}
+      {!screen2 || (
+        <Rules leftAction={screen1Tigger} rightAction={screen2Tigger} />
+      )}
+      {!screen3 || (
+        <ChooseName
+          username={username}
+          setUsername={changeUsername}
+          leftAction={screen2Tigger}
+          rightAction={screen3Tigger}
+        />
+      )}
+      {!screen4 || <Loading username={username} />}
     </div>
   );
 }
 
-//re-usable and will handle routing
+//re-usable and will handle conditional rendering
 const BackNext = props => {
   return (
     <div className="back-next">
-      {!props.left || <button className="btn2 left-btn">{props.left}</button>}
-      {!props.left || <button className="btn2 right-btn">{props.right}</button>}
+      {!props.left || (
+        <button className="btn2 left-btn" onClick={props.leftAction}>
+          {props.left}
+        </button>
+      )}
+      {!props.right || (
+        <button className="btn2 right-btn" onClick={props.rightAction}>
+          {props.right}
+        </button>
+      )}
+    </div>
+  );
+};
+
+const Loading = props => {
+  function resetIT() {
+    console.log("Start Over");
+  }
+  return (
+    <div className="loading">
+      <h1 className="main-title">Loading</h1>
+      <p className="centre">
+        Just hang on a sec {props.username}. <br />
+        We're preparing the game for you!!!
+      </p>
+      <BackNext left="reset" leftAction={resetIT} />
     </div>
   );
 };
@@ -65,27 +131,34 @@ const ChooseName = props => {
       <h3 className="text-title">What would you like to be called?</h3>
       <form onSubmit={submitName}>
         <input type="text" value={uname} onChange={handleChange} />
-        <button className="btn1">Yes</button>
+        <button className="btn1" onClick={props.rightAction}>
+          Yes
+        </button>
       </form>
       <br />
-      <BackNext right="Guest Mode" />
+      <BackNext
+        left="Back"
+        leftAction={props.leftAction}
+        right="Guest Mode"
+        rightAction={props.rightAction}
+      />
     </div>
   );
 };
 
-const Welcome = () => {
+const Welcome = props => {
   return (
     <div>
       <h3 className="text-title">Prepare Yourself</h3>
       <p className="text-body">
         Prepare to challenge your mental arithmatics and test your luck
       </p>
-      <BackNext left="Back" right="Next" />
+      <BackNext right="Next" rightAction={props.rightAction} />
     </div>
   );
 };
 
-const Rules = () => {
+const Rules = props => {
   return (
     <div className="rules-card">
       <h3 className="text-title">Game Rules</h3>
@@ -96,7 +169,12 @@ const Rules = () => {
           You MUST NOT go over more than double your Target or you will lose
         </li>
       </ol>
-      <BackNext left="Back" right="Next" />
+      <BackNext
+        left="Back"
+        leftAction={props.leftAction}
+        rightAction={props.rightAction}
+        right="Next"
+      />
     </div>
   );
 };
