@@ -9,18 +9,6 @@ Body
 Controls/Footer
 */
 
-/*
-State to watch
-viewed screen 1 to 4
-
-save to localStorage {
-setusername
-onboarding complete?
-}
-
-if localstorage onboarding NOT true
-*/
-
 export default function Onboarding() {
   const [username, changeUsername] = useState("");
   const [onboarded, setOnboarded] = useState(false);
@@ -138,11 +126,6 @@ const ChooseName = props => {
   const customSubmit = e => {
     submitName(e);
     props.rightAction();
-    // return onclick={
-    //   function hey (e){
-    //     submitName(e);
-    //     props.rightAction();
-    //   }
   };
 
   return (
