@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StoreContext } from "./../store";
 
 /*
 Components:-
@@ -81,9 +82,14 @@ const ButtonsGrid = () => {
 };
 
 export default function Game() {
+  const { username } = useContext(StoreContext);
   return (
     <div className="line main-comp">
-      <h1>Game</h1>
+      {username === "" ? (
+        <h1>Onboard First Mate</h1>
+      ) : (
+        <h1>It's showtime {username}</h1>
+      )}
       <Timer />
       <Meter />
       <ButtonsGrid />

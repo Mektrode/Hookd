@@ -10,8 +10,14 @@ export const Provider = props => {
     children
   } = props;
 
-  const [username, changeUsername] = useState(initialUsername);
+  const [username, setUsername] = useState(initialUsername);
   const [onboarded, setOnboarded] = useState(initialBoarded);
+
+  const changeUsername = name => {
+    setUsername("Hmm " + name);
+    setOnboarded(true);
+    //Push to LocalStorage
+  };
 
   // Make the context object:
   const usersContext = {

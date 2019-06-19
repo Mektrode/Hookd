@@ -11,9 +11,7 @@ Controls/Footer
 */
 
 export default function Onboarding() {
-  //const [username, changeUsername] = useState("");
-  //const [onboarded, setOnboarded] = useState(false);
-  const { username, changeUsername } = useContext(StoreContext);
+  const { username } = useContext(StoreContext);
   const [screen1, setscreen1] = useState(true);
   const [screen2, setscreen2] = useState(false);
   const [screen3, setscreen3] = useState(false);
@@ -46,8 +44,7 @@ export default function Onboarding() {
         break;
     }
   }
-  //const [state, dispatch] = useReducer(reducer, init);
-
+  //DRY these triggers
   const screen1Tigger = () => customReducer("activateScreen2");
 
   const screen2Tigger = () => customReducer("activateScreen3");
@@ -64,14 +61,9 @@ export default function Onboarding() {
         <Rules leftAction={screen1Tigger} rightAction={screen2Tigger} />
       )}
       {!screen3 || (
-        <ChooseName
-          username={username}
-          setUsername={changeUsername}
-          leftAction={screen2Tigger}
-          rightAction={screen3Tigger}
-        />
+        <ChooseName leftAction={screen2Tigger} rightAction={screen3Tigger} />
       )}
-      {!screen4 || <Loading username={username} leftAction={resetTrigger} />}
+      {!screen4 || <Loading leftAction={resetTrigger} />}
     </div>
   );
 }
@@ -95,14 +87,12 @@ const BackNext = props => {
 };
 
 const Loading = props => {
-  //   function resetIT() {
-  //     console.log("Start Over");
-  //   }
+  const { username } = useContext(StoreContext);
   return (
     <div className="loading">
-      <h1 className="main-title">Loading</h1>
+      <h2 className="main-title">Loading</h2>
       <p className="centre">
-        Just hang on a sec {props.username}. <br />
+        Just hang on a sec {username}. <br />
         We're preparing the game for you!!!
       </p>
       <BackNext left="reset" leftAction={props.leftAction} />
@@ -111,6 +101,8 @@ const Loading = props => {
 };
 
 const ChooseName = props => {
+  //Global Store connection
+  const { changeUsername } = useContext(StoreContext);
   //local state username to control form
   const [uname, setUname] = useState("");
 
@@ -121,7 +113,7 @@ const ChooseName = props => {
   const submitName = e => {
     e.preventDefault();
     console.log("Stored uname is " + { uname });
-    uname === "" ? props.setUsername("Guest") : props.setUsername(uname);
+    uname === "" ? changeUsername("Guest") : changeUsername(uname);
     setUname("");
   };
 
