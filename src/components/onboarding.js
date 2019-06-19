@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./../global.css";
-import { async } from "q";
 
 /*
 Onboarding Architecture HOC?
@@ -24,7 +23,7 @@ if localstorage onboarding NOT true
 
 export default function Onboarding() {
   const [username, changeUsername] = useState("");
-  //const [onboarded, setonboarded] = useState(false);
+  const [onboarded, setOnboarded] = useState(false);
   const [screen1, setscreen1] = useState(true);
   const [screen2, setscreen2] = useState(false);
   const [screen3, setscreen3] = useState(false);
@@ -40,15 +39,19 @@ export default function Onboarding() {
       case "activateScreen3":
         setscreen2(!screen2);
         setscreen3(!screen3);
+        console.log("Screen 3 activated");
         break;
       case "activateScreen4":
         setscreen3(!screen3);
         setscreen4(!screen4);
+        console.log("Screen 4 activated");
         break;
       case "resetBoarding":
         setscreen1(true);
         setscreen4(false);
+        console.log("Reset activated");
       default:
+        //Bug = Default trigger activates whenever Reset above is activated
         console.log("Default triggered");
         break;
     }
@@ -127,9 +130,19 @@ const ChooseName = props => {
   //Push local state up to parent component then clear local state
   const submitName = e => {
     e.preventDefault();
-    console.log({ uname });
-    props.setUsername(uname);
+    console.log("Stored uname is " + { uname });
+    uname === "" ? props.setUsername("Guest") : props.setUsername(uname);
     setUname("");
+  };
+
+  const customSubmit = e => {
+    submitName(e);
+    props.rightAction();
+    // return onclick={
+    //   function hey (e){
+    //     submitName(e);
+    //     props.rightAction();
+    //   }
   };
 
   return (
@@ -137,7 +150,7 @@ const ChooseName = props => {
       <h3 className="text-title">What would you like to be called?</h3>
       <form onSubmit={submitName}>
         <input type="text" value={uname} onChange={handleChange} />
-        <button className="btn1" onClick={props.rightAction}>
+        <button className="btn1" onClick={e => customSubmit(e)}>
           Yes
         </button>
       </form>
@@ -146,10 +159,7 @@ const ChooseName = props => {
         left="Back"
         leftAction={props.leftAction}
         right="Guest Mode"
-        rightAction={async () => {
-          await props.setUsername(uname);
-          return props.rightAction();
-        }}
+        rightAction={e => customSubmit(e)}
       />
     </div>
   );
