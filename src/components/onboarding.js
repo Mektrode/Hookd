@@ -125,7 +125,7 @@ const ChooseName = props => {
   return (
     <div>
       <h3 className="text-title">What would you like to be called?</h3>
-      <form onSubmit={submitName}>
+      <form>
         <input type="text" value={uname} onChange={handleChange} />
         <button className="btn1" onClick={e => customSubmit(e)}>
           Yes
