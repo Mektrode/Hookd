@@ -27,6 +27,6 @@ export const Provider = props => {
 export const { Consumer } = Context;
 
 Provider.defaultProps = {
-  username: "asd",
+  username: "",
   onboarded: false
 };

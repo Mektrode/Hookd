@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { StoreContext } from "./../store";
 import "./../global.css";
 
 /*
@@ -10,8 +11,9 @@ Controls/Footer
 */
 
 export default function Onboarding() {
-  const [username, changeUsername] = useState("");
-  const [onboarded, setOnboarded] = useState(false);
+  //const [username, changeUsername] = useState("");
+  //const [onboarded, setOnboarded] = useState(false);
+  const { username, changeUsername } = useContext(StoreContext);
   const [screen1, setscreen1] = useState(true);
   const [screen2, setscreen2] = useState(false);
   const [screen3, setscreen3] = useState(false);
