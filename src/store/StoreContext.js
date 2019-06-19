@@ -22,8 +22,16 @@ export const Provider = props => {
     updateStorage();
   };
 
-  const newScore = () => {
+  const newScore = (acc, stampTime) => {
     //Structure of adding new score
+    const newScorePush = {
+      id: new Date().getTime().toString(),
+      nameOfPlayer: username,
+      accuracy: acc,
+      date: stampTime
+    };
+    console.log(newScorePush);
+    setScore(myscores.concat([newScorePush]));
   };
 
   const updateStorage = () => {
@@ -51,7 +59,7 @@ Provider.defaultProps = {
   onboarded: false,
   scores: [
     {
-      id: 100,
+      id: 1160973042627,
       targetScore: 310183,
       nameOfPlayer: "Johnny",
       finalScore: 203398,
@@ -60,7 +68,7 @@ Provider.defaultProps = {
       date: "Thu 04 Apr 2019"
     },
     {
-      id: 101,
+      id: 1260973042627,
       targetScore: 710183,
       nameOfPlayer: "Hakim",
       finalScore: 403398,
