@@ -11,7 +11,7 @@ Controls/Footer
 */
 
 export default function Onboarding() {
-  const { username } = useContext(StoreContext);
+  const { status } = useContext(StoreContext);
   const [screen1, setscreen1] = useState(true);
   const [screen2, setscreen2] = useState(false);
   const [screen3, setscreen3] = useState(false);
@@ -55,7 +55,7 @@ export default function Onboarding() {
 
   return (
     <div className="line main-comp">
-      <h1 className="main-title">Welcome {username}</h1>
+      <h1 className="main-title">Welcome {status.username}</h1>
       {!screen1 || <Welcome rightAction={screen1Tigger} />}
       {!screen2 || (
         <Rules leftAction={screen1Tigger} rightAction={screen2Tigger} />
