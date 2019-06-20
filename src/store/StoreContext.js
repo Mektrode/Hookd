@@ -28,7 +28,11 @@ export const Provider = props => {
 
   const changeUsername = name => {
     console.log("changeUsername triggered");
-    newStatus(name, true);
+    if (name === "") {
+      newStatus(name, false);
+    } else {
+      newStatus(name, true);
+    }
   };
 
   const newScore = (acc, stampTime) => {
@@ -70,7 +74,7 @@ export const Provider = props => {
     console.log(JSON.parse(localStorage.getItem("status")));
   }, [status]);
 
-  const newStatus = (name, bool) => {
+  const newStatus = (name, bool = true) => {
     const newStatusPush = {
       username: name,
       onboarded: bool
