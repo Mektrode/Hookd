@@ -53,10 +53,10 @@ const Score = props => {
 };
 
 export default function MyScoreList() {
-  const { username, myscores } = useContext(StoreContext);
+  const { status, myscores } = useContext(StoreContext);
   return (
     <div className="main-comp line">
-      <h2>Hey {username}, add a score</h2>
+      <h2>Hey {status.username}, add a score</h2>
       <AddScoreTest />
       <h3>Highscores:</h3>
       {myscores.map(score => (

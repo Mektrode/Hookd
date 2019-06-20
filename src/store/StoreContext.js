@@ -4,43 +4,26 @@ export const Context = createContext({});
 
 export const Provider = props => {
   // Initial values are obtained from the props
-  const {
-    username: initialUsername,
-    onboarded: initialBoarded,
-    scores: initialScores,
-    children
-  } = props;
+  const { status: initialStatus, scores: initialScores, children } = props;
 
-  const [status, setStatus] = useState([]);
-  const [username, setUsername] = useState(initialUsername);
-  const [onboarded, setOnboarded] = useState(initialBoarded);
+  const [status, setStatus] = useState(initialStatus);
   const [myscores, setScore] = useState(initialScores);
 
   const changeUsername = name => {
-    setUsername(name);
-    setOnboarded(true);
+    console.log("changeUsername triggered");
+    newStatus(name, true);
   };
 
   const newScore = (acc, stampTime) => {
     //Structure of adding new score
     const newScorePush = {
       id: new Date().getTime().toString(),
-      nameOfPlayer: username,
+      nameOfPlayer: status.username,
       accuracy: acc,
       date: stampTime
     };
     console.log(newScorePush);
     setScore(myscores.concat([newScorePush])); //Spread operator?
-  };
-
-  const newStatus = (name, bool) => {
-    const newStatusPush = {
-      username: name,
-      onboarded: bool
-    };
-    console.log("Pushing the following to status");
-    console.log(newStatusPush);
-    setStatus(newStatusPush);
   };
 
   //Run in the beginning to see if (and if not update) status with default values in localStorage
@@ -50,15 +33,19 @@ export const Provider = props => {
       "Check localStorage effect run, recieved the stored status output below"
     );
     console.log(storedStatus);
-    if (storedStatus) {
-      setStatus(storedStatus);
-    }
+    // if (storedStatus) {
+    //   setStatus(storedStatus);
+    // }
   }, []);
 
-  useEffect(() => {
-    newStatus(username, onboarded);
-    console.log("Username or Onboarded was changed");
-  }, [username, onboarded]);
+  // useEffect(() => {
+  //   newStatus(status.username, status.onboarded);
+  //   console.log(
+  //     `Username or Onboarded was changed. Username is now ${
+  //       status.username
+  //     } and onboarded is now ${status.onboarded}`
+  //   );
+  // }, [status]);
 
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
@@ -68,13 +55,19 @@ export const Provider = props => {
     console.log(JSON.parse(localStorage.getItem("status")));
   }, [status]);
 
+  const newStatus = (name, bool) => {
+    const newStatusPush = {
+      username: name,
+      onboarded: bool
+    };
+    console.log("Will push the following to status");
+    console.log(newStatusPush);
+    setStatus(newStatusPush);
+  };
   // Make the context object:
   const setupContext = {
-    username,
     status,
     changeUsername,
-    onboarded,
-    setOnboarded,
     myscores,
     newScore
   };
@@ -89,8 +82,6 @@ Provider.defaultProps = {
     username: "",
     onboarded: false
   },
-  username: "",
-  onboarded: false,
   scores: [
     {
       id: 1160973042627,

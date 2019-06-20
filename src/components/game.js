@@ -82,13 +82,13 @@ const ButtonsGrid = () => {
 };
 
 export default function Game() {
-  const { username } = useContext(StoreContext);
+  const { status } = useContext(StoreContext);
   return (
     <div className="line main-comp">
-      {username === "" ? (
+      {status.username === "" ? (
         <h1>Onboard First Mate</h1>
       ) : (
-        <h1>It's showtime {username}</h1>
+        <h1>It's showtime {status.username}</h1>
       )}
       <Timer />
       <Meter />
