@@ -3,7 +3,7 @@ import { StoreContext } from "../store";
 import "./../global.css";
 
 export default function ResetStatus() {
-  const { status, changeUsername } = useContext(StoreContext);
+  const { changeUsername } = useContext(StoreContext);
 
   const resetLocalStorage = () => {
     changeUsername("");
