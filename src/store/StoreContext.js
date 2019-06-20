@@ -3,10 +3,27 @@ import React, { createContext, useState, useEffect } from "react";
 export const Context = createContext({});
 
 export const Provider = props => {
-  // Initial values are obtained from the props
-  const { status: initialStatus, scores: initialScores, children } = props;
+  const initialStatusSetup = () => {
+    const storedStatus = JSON.parse(localStorage.getItem("status"));
+    console.log(
+      "Check localStorage effect run, recieved the stored status output below"
+    );
+    console.log(storedStatus);
+    const defaultStatus = {
+      username: "",
+      onboarded: false
+    };
+    if (storedStatus) {
+      return storedStatus;
+    } else {
+      return defaultStatus;
+    }
+  };
 
-  const [status, setStatus] = useState(initialStatus);
+  // Initial values are obtained from the props
+  const { scores: initialScores, children } = props;
+
+  const [status, setStatus] = useState(initialStatusSetup());
   const [myscores, setScore] = useState(initialScores);
 
   const changeUsername = name => {
@@ -27,25 +44,23 @@ export const Provider = props => {
   };
 
   //Run in the beginning to see if (and if not update) status with default values in localStorage
-  useEffect(() => {
-    const storedStatus = JSON.parse(localStorage.getItem("status"));
-    console.log(
-      "Check localStorage effect run, recieved the stored status output below"
-    );
-    console.log(storedStatus);
-    // if (storedStatus) {
-    //   setStatus(storedStatus);
-    // }
-  }, []);
-
   // useEffect(() => {
-  //   newStatus(status.username, status.onboarded);
+  //   const storedStatus = JSON.parse(localStorage.getItem("status"));
   //   console.log(
-  //     `Username or Onboarded was changed. Username is now ${
-  //       status.username
-  //     } and onboarded is now ${status.onboarded}`
+  //     "Check localStorage effect run, recieved the stored status output below"
   //   );
-  // }, [status]);
+  //   console.log(storedStatus);
+  //   const defaultStatus = {
+  //     username: "",
+  //     onboarded: false
+  //   }
+  //    if (storedStatus) {
+  //      return storedStatus;
+  //    }
+  //    else {
+  //      return defaultStatus;
+  //    }
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
@@ -78,10 +93,6 @@ export const Provider = props => {
 export const { Consumer } = Context;
 
 Provider.defaultProps = {
-  status: {
-    username: "",
-    onboarded: false
-  },
   scores: [
     {
       id: 1160973042627,
