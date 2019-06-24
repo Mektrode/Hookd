@@ -13,62 +13,28 @@ Controls/Footer
 export default function Onboarding() {
   const { status } = useContext(StoreContext);
   const [activeScreen, setactiveScreen] = useState(0);
-  const [screen1, setscreen1] = useState(true);
-  const [screen2, setscreen2] = useState(false);
-  const [screen3, setscreen3] = useState(false);
-  const [screen4, setscreen4] = useState(false);
 
-  function customReducer(action) {
-    switch (action) {
-      case "activateScreen2":
-        setscreen1(!screen1);
-        setscreen2(!screen2);
-        console.log("Screen 2 activated");
-        break;
-      case "activateScreen3":
-        setscreen2(!screen2);
-        setscreen3(!screen3);
-        console.log("Screen 3 activated");
-        break;
-      case "activateScreen4":
-        setscreen3(!screen3);
-        setscreen4(!screen4);
-        console.log("Screen 4 activated");
-        break;
-      case "resetBoarding":
-        setscreen1(true);
-        setscreen4(false);
-        console.log("Reset activated");
-      default:
-        //Bug = Default trigger activates whenever Reset above is activated
-        console.log("Default triggered");
-        break;
-    }
-  }
+  const nextScreen = () => setactiveScreen(activeScreen + 1);
 
-  const resetTrigger = () => setactiveScreen(0);
+  const prevScreen = () => setactiveScreen(activeScreen - 1);
 
-  const screen1Tigger = () => setactiveScreen(1);
-
-  const screen2Tigger = () => setactiveScreen(2);
-
-  const screen3Tigger = () => setactiveScreen(3);
+  const resetScreen = () => setactiveScreen(0);
 
   return (
     <div className="line main-comp">
       <h1 className="main-title">Welcome {status.username}</h1>
-      {activeScreen === 0 ? <Welcome rightAction={screen1Tigger} /> : <span />}
+      {activeScreen === 0 ? <Welcome rightAction={nextScreen} /> : <span />}
       {activeScreen === 1 ? (
-        <Rules leftAction={resetTrigger} rightAction={screen2Tigger} />
+        <Rules leftAction={prevScreen} rightAction={nextScreen} />
       ) : (
         <span />
       )}
       {activeScreen === 2 ? (
-        <ChooseName leftAction={screen1Tigger} rightAction={screen3Tigger} />
+        <ChooseName leftAction={prevScreen} rightAction={nextScreen} />
       ) : (
         <span />
       )}
-      {activeScreen === 3 ? <Loading leftAction={resetTrigger} /> : <span />}
+      {activeScreen === 3 ? <Loading leftAction={resetScreen} /> : <span />}
     </div>
   );
 }
