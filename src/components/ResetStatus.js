@@ -12,7 +12,7 @@ export default function ResetStatus() {
   return (
     <div>
       <button className="btn2" onClick={resetLocalStorage}>
-        Reset Local Storage
+        Clear Local Storage
       </button>
     </div>
   );

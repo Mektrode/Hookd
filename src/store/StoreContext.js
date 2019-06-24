@@ -5,10 +5,10 @@ export const Context = createContext({});
 export const Provider = props => {
   const initialStatusSetup = () => {
     const storedStatus = JSON.parse(localStorage.getItem("status"));
-    console.log(
-      "Check localStorage effect run, recieved the stored status output below"
-    );
-    console.log(storedStatus);
+    // console.log(
+    //   "Checked localStorage, recieved the object below, sent in as initial state for Status"
+    // );
+    // console.log(storedStatus);
     const defaultStatus = {
       username: "",
       onboarded: false
@@ -47,31 +47,10 @@ export const Provider = props => {
     setScore(myscores.concat([newScorePush])); //Spread operator?
   };
 
-  //Run in the beginning to see if (and if not update) status with default values in localStorage
-  // useEffect(() => {
-  //   const storedStatus = JSON.parse(localStorage.getItem("status"));
-  //   console.log(
-  //     "Check localStorage effect run, recieved the stored status output below"
-  //   );
-  //   console.log(storedStatus);
-  //   const defaultStatus = {
-  //     username: "",
-  //     onboarded: false
-  //   }
-  //    if (storedStatus) {
-  //      return storedStatus;
-  //    }
-  //    else {
-  //      return defaultStatus;
-  //    }
-  // }, []);
-
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
-    console.log(status);
-    console.log("Pushed the above status to localStorage");
-    console.log("Now the new local storage recieved is:");
-    console.log(JSON.parse(localStorage.getItem("status")));
+    // console.log("Pushed the object below to status => localStorage");
+    // console.log(status);
   }, [status]);
 
   const newStatus = (name, bool = true) => {

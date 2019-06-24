@@ -12,6 +12,7 @@ Controls/Footer
 
 export default function Onboarding() {
   const { status } = useContext(StoreContext);
+  const [activeScreen, setactiveScreen] = useState(0);
   const [screen1, setscreen1] = useState(true);
   const [screen2, setscreen2] = useState(false);
   const [screen3, setscreen3] = useState(false);
@@ -44,26 +45,30 @@ export default function Onboarding() {
         break;
     }
   }
-  //DRY these triggers
-  const screen1Tigger = () => customReducer("activateScreen2");
 
-  const screen2Tigger = () => customReducer("activateScreen3");
+  const resetTrigger = () => setactiveScreen(0);
 
-  const screen3Tigger = () => customReducer("activateScreen4");
+  const screen1Tigger = () => setactiveScreen(1);
 
-  const resetTrigger = () => customReducer("resetBoarding");
+  const screen2Tigger = () => setactiveScreen(2);
+
+  const screen3Tigger = () => setactiveScreen(3);
 
   return (
     <div className="line main-comp">
       <h1 className="main-title">Welcome {status.username}</h1>
-      {!screen1 || <Welcome rightAction={screen1Tigger} />}
-      {!screen2 || (
-        <Rules leftAction={screen1Tigger} rightAction={screen2Tigger} />
+      {activeScreen === 0 ? <Welcome rightAction={screen1Tigger} /> : <span />}
+      {activeScreen === 1 ? (
+        <Rules leftAction={resetTrigger} rightAction={screen2Tigger} />
+      ) : (
+        <span />
       )}
-      {!screen3 || (
-        <ChooseName leftAction={screen2Tigger} rightAction={screen3Tigger} />
+      {activeScreen === 2 ? (
+        <ChooseName leftAction={screen1Tigger} rightAction={screen3Tigger} />
+      ) : (
+        <span />
       )}
-      {!screen4 || <Loading leftAction={resetTrigger} />}
+      {activeScreen === 3 ? <Loading leftAction={resetTrigger} /> : <span />}
     </div>
   );
 }
