@@ -1,11 +1,11 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
-function Header() {
+function Header(props) {
   return (
     <Wrapper>
-      <h3>Title</h3>
+      <h3>{props.location.pathname}</h3>
     </Wrapper>
   );
 }
@@ -14,11 +14,12 @@ const Wrapper = styled.div`
   height: 50px;
   background-color: #eee;
   margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+
   h3 {
     text-align: center;
     padding-top: 10px;
   }
 `;
 
-export default Header;
+export default withRouter(Header);
