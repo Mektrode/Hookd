@@ -7,6 +7,7 @@ import Game from "./components/game";
 import ResetStatus from "./components/ResetStatus";
 import "./global.css";
 import Header from "./components/Header";
+import Container from "./components/Container";
 
 function App() {
   return (
@@ -15,9 +16,11 @@ function App() {
         <Router>
           <div>
             <Header />
-            <Route exact path="/" component={Onboarding} />
-            <Route path="/game" component={Game} />
-            <Route path="/scores" component={ScoreList} />
+            <Container>
+              <Route exact path="/" component={Onboarding} />
+              <Route path="/game" component={Game} />
+              <Route path="/scores" component={ScoreList} />
+            </Container>
             <ResetStatus />
           </div>
         </Router>

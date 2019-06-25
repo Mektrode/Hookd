@@ -1,5 +1,11 @@
 import React from "react";
+import styled from "styled-components";
 
-export default function Container() {
-  return <div>{...children}</div>;
+function Container(props) {
+  return <Wrapper>{props.children}</Wrapper>;
 }
+
+const Wrapper = styled.div`
+  color: grey; //test
+`;
+export default Container;

@@ -2,10 +2,26 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
+const checkLocation = check => {
+  switch (check) {
+    case "/":
+      return "Home";
+      break;
+    case "/game":
+      return "Game";
+      break;
+    case "/scores":
+      return "Highscores";
+      break;
+    default:
+      break;
+  }
+};
+
 function Header(props) {
   return (
     <Wrapper>
-      <h3>{props.location.pathname}</h3>
+      <h3>{checkLocation(props.location.pathname)}</h3>
     </Wrapper>
   );
 }
@@ -13,9 +29,9 @@ function Header(props) {
 const Wrapper = styled.div`
   height: 50px;
   background-color: #eee;
-  margin-bottom: 10px;
-  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
-
+  border-bottom: 1px solid grey;
+  position: fixed;
+  width: 100vw;
   h3 {
     text-align: center;
     padding-top: 10px;
