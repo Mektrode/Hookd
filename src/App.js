@@ -8,6 +8,7 @@ import ResetStatus from "./components/ResetStatus";
 import "./global.css";
 import Header from "./components/Header";
 import Container from "./components/Container";
+import SpeedDial from "./components/SpeedDial";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               <Route path="/scores" component={ScoreList} />
             </Container>
             <ResetStatus />
+            <SpeedDial />
           </div>
         </Router>
       </StoreContextProvider>
