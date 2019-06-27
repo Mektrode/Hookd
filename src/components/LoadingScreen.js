@@ -11,7 +11,6 @@ const LoadingScreen = props => {
         Just hang on a sec {username}. <br />
         We're preparing the game for you!!!
       </p>
-      <Controls left="reset" leftAction={props.leftAction} />
     </div>
   );
 };

@@ -12,12 +12,6 @@ const RulesScreen = props => {
           You MUST NOT go over more than double your Target or you will lose
         </li>
       </ol>
-      <Controls
-        left="Back"
-        leftAction={props.leftAction}
-        rightAction={props.rightAction}
-        right="Next"
-      />
     </div>
   );
 };
