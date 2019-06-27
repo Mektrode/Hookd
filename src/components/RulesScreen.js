@@ -1,5 +1,4 @@
 import React from "react";
-import Controls from "./Controls";
 
 const RulesScreen = props => {
   return (

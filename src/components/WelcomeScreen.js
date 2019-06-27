@@ -1,5 +1,4 @@
 import React from "react";
-import Controls from "./Controls";
 
 const WelcomeScreen = props => {
   return (
@@ -8,7 +7,6 @@ const WelcomeScreen = props => {
       <p className="text-body">
         Prepare to challenge your mental arithmatics and test your luck
       </p>
-      <Controls right="Next" rightAction={props.rightAction} />
     </div>
   );
 };

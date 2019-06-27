@@ -40,6 +40,7 @@ function Onboarding() {
         return setactiveScreen(activeScreen - 1);
         break;
       default:
+        console.log("ERROR, Unknown Case");
         break;
     }
 
@@ -83,8 +84,6 @@ function Onboarding() {
       ) : (
         <span />
       )}
-      <br />
-      <h6>These are test Buttons below</h6>
       <Controls
         currentScreen={activeScreen}
         leftAction={prevScreen}

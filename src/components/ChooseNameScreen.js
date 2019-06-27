@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { StoreContext } from "./../store";
-import Controls from "./Controls";
 
 const ChooseNameScreen = props => {
   //Global Store connection
@@ -32,14 +31,11 @@ const ChooseNameScreen = props => {
         <button className="btn1" onClick={e => customSubmit(e)}>
           Yes
         </button>
+        <button className="btn2" onClick={e => customSubmit(e)}>
+          Guest Mode
+        </button>
       </form>
       <br />
-      <Controls
-        left="Back"
-        leftAction={props.leftAction}
-        right="Guest Mode"
-        rightAction={e => customSubmit(e)}
-      />
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Controls from "./Controls";
 import { StoreContext } from "./../store";
 
 const LoadingScreen = props => {
