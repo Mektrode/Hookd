@@ -26,11 +26,30 @@ function Onboarding() {
   const resetScreen = () => setactiveScreen(0);
 
   const prevScreen = () => {
-    if (activeScreen <= 2) {
-      return setactiveScreen(activeScreen - 1);
-    } else if (activeScreen === 0) {
-      console.log("Thats as far back as possible mate!!!");
+    switch (activeScreen) {
+      case 0:
+        console.log("Sorry mate, cant go back!!!");
+        break;
+      case 1:
+        return setactiveScreen(activeScreen - 1);
+        break;
+      case 2:
+        return setactiveScreen(activeScreen - 1);
+        break;
+      case 3:
+        return setactiveScreen(activeScreen - 1);
+        break;
+      default:
+        break;
     }
+
+    // if (activeScreen <= 0) {
+    //   return setactiveScreen(activeScreen - 1);
+    // } else if (activeScreen === 0) {
+    //   console.log("Thats as far back as possible mate!!!");
+    // } else {
+    //   console.log("Hmmmm");
+    // }
   };
 
   const nextScreen = () => {
