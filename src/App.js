@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { StoreContextProvider } from "./store";
-import Onboarding from "./components/onboarding";
+import Onboarding from "./Pages/onboarding";
 import ScoreList from "./components/highscores";
 import Game from "./components/game";
 import ResetStatus from "./components/ResetStatus";
 import "./global.css";
-import Header from "./components/Header";
 import Container from "./components/Container";
 import SpeedDial from "./components/SpeedDial";
+import Header from "./components/Header";
 
 function App() {
   return (
