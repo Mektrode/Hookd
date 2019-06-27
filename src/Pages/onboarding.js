@@ -19,11 +19,27 @@ function Onboarding() {
   const { status } = useContext(StoreContext);
   const [activeScreen, setactiveScreen] = useState(0);
 
-  const nextScreen = () => setactiveScreen(activeScreen + 1);
+  //const nextScreen = () => setactiveScreen(activeScreen + 1);
 
-  const prevScreen = () => setactiveScreen(activeScreen - 1);
+  //const prevScreen = () => setactiveScreen(activeScreen - 1);
 
   const resetScreen = () => setactiveScreen(0);
+
+  const prevScreen = () => {
+    if (activeScreen <= 2) {
+      return setactiveScreen(activeScreen - 1);
+    } else if (activeScreen === 0) {
+      console.log("Thats as far back as possible mate!!!");
+    }
+  };
+
+  const nextScreen = () => {
+    if (activeScreen <= 2) {
+      return setactiveScreen(activeScreen + 1);
+    } else if (activeScreen >= 4) {
+      console.log("Wow!!!");
+    }
+  };
 
   return (
     <div className="line main-comp">
@@ -50,7 +66,11 @@ function Onboarding() {
       )}
       <br />
       <h6>These are test Buttons below</h6>
-      <Controls currentScreen={activeScreen} />
+      <Controls
+        currentScreen={activeScreen}
+        leftAction={prevScreen}
+        rightAction={nextScreen}
+      />
     </div>
   );
 }
