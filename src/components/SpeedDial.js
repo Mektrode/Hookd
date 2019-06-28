@@ -7,10 +7,10 @@ import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 
-import FileCopyIcon from "@material-ui/icons/FileCopyOutlined";
-import SaveIcon from "@material-ui/icons/Save";
-import PrintIcon from "@material-ui/icons/Print";
-import ShareIcon from "@material-ui/icons/Share";
+import HomeIcon from "@material-ui/icons/Home";
+import ScoreIcon from "@material-ui/icons/Score";
+import GameIcon from "@material-ui/icons/Score";
+import SettingsIcon from "@material-ui/icons/Settings";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 const SpeedDialsHooks = props => {
@@ -41,13 +41,13 @@ const SpeedDialsHooks = props => {
 
   const actions = [
     {
-      icon: <FileCopyIcon />,
+      icon: <HomeIcon />,
       name: "Home",
       do: () => wireUp("HOME")
     },
-    { icon: <SaveIcon />, name: "Scores", do: () => wireUp("SCORES") },
-    { icon: <PrintIcon />, name: "Game", do: () => wireUp("GAME") },
-    { icon: <ShareIcon />, name: "Settings", do: () => wireUp("HOME") },
+    { icon: <ScoreIcon />, name: "Scores", do: () => wireUp("SCORES") },
+    { icon: <GameIcon />, name: "Game", do: () => wireUp("GAME") },
+    { icon: <SettingsIcon />, name: "Settings", do: () => wireUp("HOME") },
     {
       icon: <DeleteIcon />,
       name: "Clear Local Storage",
