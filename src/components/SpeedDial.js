@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Link, withRouter } from "react-router-dom";
+import { StoreContext } from "../store";
 
 import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
@@ -13,10 +14,13 @@ import ShareIcon from "@material-ui/icons/Share";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 const SpeedDialsHooks = props => {
+  const { changeUsername } = useContext(StoreContext);
+
   const wireUp = which => {
     switch (which) {
       case "CLEAR":
         console.log("You have pressed CLEAR");
+        return changeUsername("");
         break;
       case "HOME":
         console.log("You have pressed HOME");

@@ -22,7 +22,6 @@ function App() {
               <Route path="/game" component={Game} />
               <Route path="/scores" component={ScoreList} />
             </Container>
-            <ResetStatus />
             <SpeedDial />
           </div>
         </Router>
