@@ -67,16 +67,10 @@ const SpeedDialsHooks = props => {
   const handleClose = () => {
     setStatus(status => ({ ...status, open: false }));
   };
-  const divStyle = {
-    width: 100,
-    border: 1,
-    borderColor: "black",
-    borderStyle: "solid"
-  };
 
   return (
     <div>
-      <div style={divStyle}>
+      <div>
         <Wrapper>
           <SpeedDial
             ariaLabel="SpeedDial example"
