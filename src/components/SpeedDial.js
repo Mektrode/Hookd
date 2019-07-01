@@ -34,6 +34,10 @@ const SpeedDialsHooks = props => {
         console.log("You have pressed SCORES");
         return props.history.push("/scores");
         break;
+      case "SETTINGS":
+        console.log("You have pressed SCORES");
+        return props.history.push("/settings");
+        break;
       default:
         break;
     }
@@ -47,7 +51,7 @@ const SpeedDialsHooks = props => {
     },
     { icon: <ScoreIcon />, name: "Scores", do: () => wireUp("SCORES") },
     { icon: <GameIcon />, name: "Game", do: () => wireUp("GAME") },
-    { icon: <SettingsIcon />, name: "Settings", do: () => wireUp("HOME") },
+    { icon: <SettingsIcon />, name: "Settings", do: () => wireUp("SETTINGS") },
     {
       icon: <DeleteIcon />,
       name: "Clear Local Storage",
