@@ -6,18 +6,9 @@ const checkLocation = check => {
   switch (check) {
     case "/":
       return "Home";
-      break;
-    case "/game":
-      return "Game";
-      break;
-    case "/scores":
-      return "Highscores";
-      break;
-    case "/settings":
-      return "Settings";
-      break;
     default:
-      break;
+      let afterSlash = check.slice(1, check.legth);
+      return afterSlash.charAt(0).toUpperCase() + afterSlash.slice(1);
   }
 };
 
