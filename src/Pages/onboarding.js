@@ -8,10 +8,9 @@ import ChooseNameScreen from "../components/ChooseNameScreen";
 import LoadingScreen from "../components/LoadingScreen";
 
 /*
-Onboarding Architecture HOC?
-Title
-Subtitle
-Body
+Onboarding Architecture HOC:
+Content
+Timeline
 Controls/Footer
 */
 
@@ -63,7 +62,7 @@ function Onboarding() {
 
   return (
     <div className="line main-comp">
-      <h1 className="main-title">Welcome {status.username}</h1>
+      <h1 className="main-title">Onboarding {status.username}</h1>
       {activeScreen === 0 ? (
         <WelcomeScreen rightAction={nextScreen} />
       ) : (

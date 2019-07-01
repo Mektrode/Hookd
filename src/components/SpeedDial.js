@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { StoreContext } from "../store";
 
 import SpeedDial from "@material-ui/lab/SpeedDial";

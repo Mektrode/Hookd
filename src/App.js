@@ -4,11 +4,11 @@ import { StoreContextProvider } from "./store";
 import Onboarding from "./Pages/onboarding";
 import ScoreList from "./components/highscores";
 import Game from "./components/game";
-import ResetStatus from "./components/ResetStatus";
 import "./global.css";
 import Container from "./components/Container";
 import SpeedDial from "./components/SpeedDial";
 import Header from "./components/Header";
+import Settings from "./Pages/Settings";
 
 function App() {
   return (
@@ -21,6 +21,7 @@ function App() {
               <Route exact path="/" component={Onboarding} />
               <Route path="/game" component={Game} />
               <Route path="/scores" component={ScoreList} />
+              <Route path="/settings" component={Settings} />
             </Container>
             <SpeedDial />
           </div>
