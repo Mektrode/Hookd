@@ -13,6 +13,9 @@ const checkLocation = check => {
     case "/scores":
       return "Highscores";
       break;
+    case "/settings":
+      return "Settings";
+      break;
     default:
       break;
   }
