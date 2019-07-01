@@ -20,7 +20,6 @@ const ChooseNameScreen = props => {
 
   const customSubmit = e => {
     submitName(e);
-    props.rightAction();
   };
 
   return (

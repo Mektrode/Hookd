@@ -31,13 +31,10 @@ function Onboarding() {
         break;
       case 1:
         return setactiveScreen(activeScreen - 1);
-        break;
       case 2:
         return setactiveScreen(activeScreen - 1);
-        break;
       case 3:
         return setactiveScreen(activeScreen - 1);
-        break;
       default:
         console.log("ERROR, Unknown Case");
         break;

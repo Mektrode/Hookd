@@ -9,6 +9,7 @@ import Container from "./components/Container";
 import SpeedDial from "./components/SpeedDial";
 import Header from "./components/Header";
 import Settings from "./Pages/Settings";
+import Home from "./Pages/Home";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <div>
             <Header />
             <Container>
-              <Route exact path="/" component={Onboarding} />
+              <Route exact path="/" component={Home} />
               <Route path="/game" component={Game} />
               <Route path="/scores" component={ScoreList} />
               <Route path="/settings" component={Settings} />

@@ -21,24 +21,20 @@ const SpeedDialsHooks = props => {
       case "CLEAR":
         console.log("You have pressed CLEAR");
         return changeUsername("");
-        break;
       case "HOME":
         console.log("You have pressed HOME");
         return props.history.push("/");
-        break;
       case "GAME":
         console.log("You have pressed GAME");
         return props.history.push("/game");
-        break;
       case "SCORES":
         console.log("You have pressed SCORES");
         return props.history.push("/scores");
-        break;
       case "SETTINGS":
         console.log("You have pressed SCORES");
         return props.history.push("/settings");
-        break;
       default:
+        console.log("Nothing to Wire!!");
         break;
     }
   };
