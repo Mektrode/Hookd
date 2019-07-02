@@ -103,7 +103,7 @@ const Wrapper = styled.div`
   //border: 1px solid black;
   width: 70px;
   position: fixed;
-  bottom: 10vh;
+  bottom: 1vh;
   left: 10vw;
   text-align: center;
 `;
