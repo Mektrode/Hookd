@@ -29,6 +29,8 @@ const ChooseName = () => {
   return (
     <div>
       <form>
+        <label>Type new username!</label>
+        <br />
         <input type="text" value={uname} onChange={handleChange} />
         <button className="btn1" onClick={e => customSubmit(e)}>
           Yes
