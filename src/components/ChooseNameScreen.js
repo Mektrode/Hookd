@@ -14,12 +14,16 @@ const ChooseNameScreen = props => {
   const submitName = e => {
     e.preventDefault();
     console.log("Stored uname is " + { uname });
-    uname === "" ? changeUsername("Guest") : changeUsername(uname);
+    uname === "" ? alert("Type something in") : changeUsername(uname);
     setUname("");
   };
 
   const customSubmit = e => {
     submitName(e);
+  };
+
+  const setGuest = () => {
+    changeUsername("Guest");
   };
 
   return (
@@ -30,7 +34,7 @@ const ChooseNameScreen = props => {
         <button className="btn1" onClick={e => customSubmit(e)}>
           Yes
         </button>
-        <button className="btn2" onClick={e => customSubmit(e)}>
+        <button className="btn2" onClick={() => changeUsername("Guest")}>
           Guest Mode
         </button>
       </form>
