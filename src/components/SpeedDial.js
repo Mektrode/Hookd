@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { StoreContext } from "../store";
+import { makeStyles } from "@material-ui/styles";
 
 import SpeedDial from "@material-ui/lab/SpeedDial";
 import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
@@ -68,6 +69,8 @@ const SpeedDialsHooks = props => {
     setStatus(status => ({ ...status, open: false }));
   };
 
+  const classes = useStyles();
+
   return (
     <div>
       <div>
@@ -82,6 +85,7 @@ const SpeedDialsHooks = props => {
             onMouseLeave={handleClose}
             open={status.open}
             direction={status.direction}
+            classes={{ fab: classes.fab }}
           >
             {actions.map(action => (
               <SpeedDialAction
@@ -107,5 +111,11 @@ const Wrapper = styled.div`
   left: 10vw;
   text-align: center;
 `;
+
+const useStyles = makeStyles({
+  fab: {
+    background: "linear-gradient(45deg, #FE6B8B 30%, #fa44eb 90%)"
+  }
+});
 
 export default withRouter(SpeedDialsHooks);
