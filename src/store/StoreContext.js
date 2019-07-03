@@ -5,10 +5,6 @@ export const Context = createContext({});
 export const Provider = props => {
   const initialStatusSetup = () => {
     const storedStatus = JSON.parse(localStorage.getItem("status"));
-    // console.log(
-    //   "Checked localStorage, recieved the object below, sent in as initial state for Status"
-    // );
-    // console.log(storedStatus);
     const defaultStatus = {
       username: "",
       onboarded: false
@@ -50,7 +46,7 @@ export const Provider = props => {
   };
 
   // Initial values are obtained from the props
-  const { scores: initialScores, children } = props;
+  const { children } = props;
 
   const [status, setStatus] = useState(initialStatusSetup());
   const [myscores, setScore] = useState(initialScoresSetup());
@@ -81,6 +77,12 @@ export const Provider = props => {
     // console.log("Pushed the object below to status => localStorage");
     // console.log(status);
   }, [status]);
+
+  useEffect(() => {
+    localStorage.setItem("scores", JSON.stringify(myscores));
+    // console.log("Pushed the object below to scores => localStorage");
+    // console.log(scores);
+  }, [myscores]);
 
   const newStatus = (name, bool = true) => {
     const newStatusPush = {
