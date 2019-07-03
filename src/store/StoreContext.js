@@ -20,11 +20,40 @@ export const Provider = props => {
     }
   };
 
+  const initialScoresSetup = () => {
+    const storedScores = JSON.parse(localStorage.getItem("scores"));
+    const defaultScores = [
+      {
+        id: 1160973042627,
+        targetScore: 310183,
+        nameOfPlayer: "Johnny",
+        finalScore: 203398,
+        accuracy: 68,
+        timeTaken: 60,
+        date: "24m ago"
+      },
+      {
+        id: 1260973042627,
+        targetScore: 710183,
+        nameOfPlayer: "Hakim",
+        finalScore: 403398,
+        accuracy: 53,
+        timeTaken: 60,
+        date: "32m ago"
+      }
+    ];
+    if (storedScores) {
+      return storedScores;
+    } else {
+      return defaultScores;
+    }
+  };
+
   // Initial values are obtained from the props
   const { scores: initialScores, children } = props;
 
   const [status, setStatus] = useState(initialStatusSetup());
-  const [myscores, setScore] = useState(initialScores);
+  const [myscores, setScore] = useState(initialScoresSetup());
 
   const changeUsername = name => {
     console.log("changeUsername triggered");
@@ -74,26 +103,3 @@ export const Provider = props => {
 };
 
 export const { Consumer } = Context;
-
-Provider.defaultProps = {
-  scores: [
-    {
-      id: 1160973042627,
-      targetScore: 310183,
-      nameOfPlayer: "Johnny",
-      finalScore: 203398,
-      accuracy: 68,
-      timeTaken: 60,
-      date: "Thu 04 Apr 2019"
-    },
-    {
-      id: 1260973042627,
-      targetScore: 710183,
-      nameOfPlayer: "Hakim",
-      finalScore: 403398,
-      accuracy: 53,
-      timeTaken: 60,
-      date: "Thu 04 Apr 2019"
-    }
-  ]
-};
