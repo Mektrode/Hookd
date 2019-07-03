@@ -15,13 +15,13 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 const SpeedDialsHooks = props => {
-  const { changeUsername } = useContext(StoreContext);
+  const { clearLocalStorage } = useContext(StoreContext);
 
   const wireUp = which => {
     switch (which) {
       case "CLEAR":
         console.log("You have pressed CLEAR");
-        return changeUsername("");
+        return clearLocalStorage();
       case "HOME":
         console.log("You have pressed HOME");
         return props.history.push("/");

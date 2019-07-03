@@ -72,6 +72,19 @@ export const Provider = props => {
     setScore(myscores.concat([newScorePush])); //Spread operator?
   };
 
+  const clearScores = () => {
+    const clearedScores = [
+      { id: 123, nameOfPlayer: "Unknown", accuracy: null, timeTaken: null }
+    ];
+    setScore(clearedScores);
+    console.log("setScore set to null");
+    localStorage.setItem("scores", JSON.stringify(myscores));
+  };
+
+  const clearLocalStorage = () => {
+    changeUsername("");
+    clearScores();
+  };
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
     // console.log("Pushed the object below to status => localStorage");
@@ -97,6 +110,7 @@ export const Provider = props => {
   const setupContext = {
     status,
     changeUsername,
+    clearLocalStorage,
     myscores,
     newScore
   };
