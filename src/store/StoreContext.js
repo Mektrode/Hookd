@@ -69,11 +69,15 @@ export const Provider = props => {
       date: stampTime
     };
     console.log(newScorePush);
-    setScore(myscores.concat([newScorePush])); //Spread operator?
+    if (myscores) {
+      setScore(myscores.concat([newScorePush]));
+    } else {
+      setScore(myscores.push([newScorePush]));
+    }
   };
 
   const clearScores = () => {
-    setScore(null);
+    setScore([]);
     localStorage.setItem("scores", JSON.stringify(myscores));
   };
 

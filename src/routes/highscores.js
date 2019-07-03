@@ -59,7 +59,7 @@ export default function MyScoreList() {
       <h2>Hey {status.username}, add a score</h2>
       <AddScoreTest />
       <h3>Highscores:</h3>
-      {!myscores ? (
+      {myscores.length < 1 ? (
         <div id="score-card">No scores!!!</div>
       ) : (
         myscores.map(score => (
