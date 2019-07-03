@@ -59,14 +59,18 @@ export default function MyScoreList() {
       <h2>Hey {status.username}, add a score</h2>
       <AddScoreTest />
       <h3>Highscores:</h3>
-      {myscores.map(score => (
-        <Score
-          key={score.id}
-          name={score.nameOfPlayer}
-          accuracy={score.accuracy}
-          timestamp={score.date}
-        />
-      ))}
+      {!myscores ? (
+        <div id="score-card">No scores!!!</div>
+      ) : (
+        myscores.map(score => (
+          <Score
+            key={score.id}
+            name={score.nameOfPlayer}
+            accuracy={score.accuracy}
+            timestamp={score.date}
+          />
+        ))
+      )}
     </div>
   );
 }

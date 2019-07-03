@@ -73,11 +73,7 @@ export const Provider = props => {
   };
 
   const clearScores = () => {
-    const clearedScores = [
-      { id: 123, nameOfPlayer: "Unknown", accuracy: null, timeTaken: null }
-    ];
-    setScore(clearedScores);
-    console.log("setScore set to null");
+    setScore(null);
     localStorage.setItem("scores", JSON.stringify(myscores));
   };
 
@@ -87,14 +83,10 @@ export const Provider = props => {
   };
   useEffect(() => {
     localStorage.setItem("status", JSON.stringify(status));
-    // console.log("Pushed the object below to status => localStorage");
-    // console.log(status);
   }, [status]);
 
   useEffect(() => {
     localStorage.setItem("scores", JSON.stringify(myscores));
-    // console.log("Pushed the object below to scores => localStorage");
-    // console.log(scores);
   }, [myscores]);
 
   const newStatus = (name, bool = true) => {
