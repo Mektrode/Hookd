@@ -4,6 +4,7 @@ import styled from "styled-components";
 function ScoreCard(props) {
   return (
     <CardStyle>
+      <GridNumber>1</GridNumber>
       <GridLeft>
         Name <br />
         {props.name}
@@ -22,9 +23,14 @@ function ScoreCard(props) {
 const CardStyle = styled.div`
   margin: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.4fr 1.2fr 1.2fr 1.2fr;
   grid-template-rows: 1fr;
-  grid-template-areas: "left center right";
+  grid-template-areas: "number left center right";
+`;
+
+const GridNumber = styled.div`
+  grid-area: number;
+  text-align: center;
 `;
 
 const GridLeft = styled.div`
