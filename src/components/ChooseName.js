@@ -22,10 +22,6 @@ const ChooseName = () => {
     submitName(e);
   };
 
-  const setGuest = () => {
-    changeUsername("Guest");
-  };
-
   return (
     <div>
       <form>
