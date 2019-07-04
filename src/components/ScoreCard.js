@@ -20,6 +20,7 @@ function ScoreCard(props) {
 }
 
 const CardStyle = styled.div`
+  margin: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
