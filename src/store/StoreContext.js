@@ -76,6 +76,29 @@ export const Provider = props => {
     }
   };
 
+  const rankBy = (duration, user) => {
+    return [
+      {
+        id: 1160973042627,
+        targetScore: 310183,
+        nameOfPlayer: "Johnny",
+        finalScore: 203398,
+        accuracy: 68,
+        timeTaken: 60,
+        date: "24m ago"
+      },
+      {
+        id: 1260973042627,
+        targetScore: 710183,
+        nameOfPlayer: "Hakim",
+        finalScore: 403398,
+        accuracy: 53,
+        timeTaken: 60,
+        date: "32m ago"
+      }
+    ];
+  };
+
   const clearScores = () => {
     setScore([]);
     localStorage.setItem("scores", JSON.stringify(myscores));
@@ -108,7 +131,8 @@ export const Provider = props => {
     changeUsername,
     clearLocalStorage,
     myscores,
-    newScore
+    newScore,
+    rankBy
   };
   // pass the value in provider and return
   return <Context.Provider value={setupContext}>{children}</Context.Provider>;
