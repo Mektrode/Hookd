@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-function Timer() {
+const Timer = props => {
   return (
     <TimerWrapper>
       <span>01:00</span>
     </TimerWrapper>
   );
-}
+};
 
 const TimerWrapper = styled.div`
   border: 1px solid black;

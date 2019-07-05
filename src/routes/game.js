@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../store";
 import Timer from "../components/Timer";
+import GameOver from "../components/GameOver";
 
 /*
 Components:-
@@ -10,15 +11,6 @@ Components:-
 - Buttons Grid
 - Gamer Over Pop-Up/Modal
 */
-
-function GameOver() {
-  return (
-    <div className="line main-comp">
-      <h1>Times Up!!!</h1>
-      <h3>Your score was:-</h3>
-    </div>
-  );
-}
 
 const Meter = () => {
   return (
