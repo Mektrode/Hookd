@@ -4,7 +4,7 @@ import styled from "styled-components";
 function ScoreCard(props) {
   return (
     <CardStyle>
-      <GridNumber>{props.key}</GridNumber>
+      <GridNumber>{props.rank}</GridNumber>
       <GridLeft>
         Name <br />
         {props.name}

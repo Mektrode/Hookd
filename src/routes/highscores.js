@@ -6,6 +6,8 @@ import AddScore from "../components/AddScore";
 
 function MyScoreList() {
   const { status, myscores } = useContext(StoreContext);
+  //Parse Through myscores array and sort by order of latest timestamp first
+
   return (
     <div className="main-comp line">
       <h2>Hey {status.username}, add a score</h2>

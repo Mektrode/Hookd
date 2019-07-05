@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../store";
+import Timer from "../components/Timer";
 
 /*
 Components:-
@@ -9,14 +10,6 @@ Components:-
 - Buttons Grid
 - Gamer Over Pop-Up/Modal
 */
-
-const Timer = () => {
-  return (
-    <div className="line timer">
-      <span>01:00</span>
-    </div>
-  );
-};
 
 function GameOver() {
   return (
