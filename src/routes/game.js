@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { StoreContext } from "../store";
 import Timer from "../components/Timer";
 import GameOver from "../components/GameOver";
+import TargetMeter from "../components/TargetMeter";
 
 /*
 Components:-
@@ -11,18 +12,6 @@ Components:-
 - Buttons Grid
 - Gamer Over Pop-Up/Modal
 */
-
-const Meter = () => {
-  return (
-    <div className="meter-grid line timer">
-      <div className="meter-container">
-        <div className="meter1">Target: 12189384123</div>
-        <div className="meter2">34%</div>
-        <div className="meter3">You: 190814</div>
-      </div>
-    </div>
-  );
-};
 
 const ButtonsGrid = () => {
   return (
@@ -76,7 +65,7 @@ export default function Game() {
         <h1>It's showtime {status.username}</h1>
       )}
       <Timer />
-      <Meter />
+      <TargetMeter />
       <ButtonsGrid />
       <GameOver />
     </div>
