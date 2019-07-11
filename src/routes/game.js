@@ -25,10 +25,23 @@ const defaultGame = {
   target: 100
 };
 
+const defaultEngine = {
+  //Is the countdown on?
+  timerOn: false,
+
+  //DOM will read this and logic will write to this variable
+  currentNum: null,
+
+  //DOM will read this and logic will write to this variable
+  currentTime: null
+};
+
 export default function Game() {
   const { status } = useContext(StoreContext);
 
   const [gameSettings, setGameSettings] = useState(defaultGame);
+
+  const [gameEngine, setGameEngine] = useState(defaultEngine);
 
   return (
     <div className="line main-comp">
