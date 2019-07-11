@@ -4,6 +4,7 @@ import Timer from "../components/Timer";
 import GameOver from "../components/GameOver";
 import TargetMeter from "../components/TargetMeter";
 import FX from "../components/FX";
+import * as maths from "../lib/maths";
 
 //CHANGE TO STATE IF TO BE ADJUSTED IN SETTINGS BY PLAYER LATER
 const defaultGame = {
@@ -30,8 +31,8 @@ const defaultEngine = {
 
 function engineReducer(state, action) {
   switch (action.type) {
-    case "SET TARGET":
-      state.target = action.payload;
+    case "NEW TARGET":
+      state.target = maths.getRandomNum(2, 999999);
       break;
     case "RESET TARGET":
       state.target = defaultEngine.target;
