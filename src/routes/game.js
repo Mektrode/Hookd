@@ -1,19 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useReducer, useContext } from "react";
 import { StoreContext } from "../store";
 import Timer from "../components/Timer";
 import GameOver from "../components/GameOver";
 import TargetMeter from "../components/TargetMeter";
 import FX from "../components/FX";
 
-/*
-Components:-
-- Countdown to start //not neccessary yet
-- Timer
-- Target/Current Number & % away
-- Buttons Grid
-- Gamer Over Pop-Up/Modal
-*/
-
+//CHANGE TO STATE IF TO BE ADJUSTED IN SETTINGS BY PLAYER LATER
 const defaultGame = {
   //Users starting number
   startnum: 2,
@@ -36,12 +28,22 @@ const defaultEngine = {
   currentTime: null
 };
 
+function engineReducer(state, action) {
+  switch (action.type) {
+    case "SET TARGET":
+      state.target = action.payload;
+      break;
+    case "RESET TARGET":
+      state.target = defaultEngine.target;
+      break;
+    default:
+      throw new Error();
+  }
+}
+
 export default function Game() {
   const { status } = useContext(StoreContext);
-
-  const [gameSettings, setGameSettings] = useState(defaultGame);
-
-  const [gameEngine, setGameEngine] = useState(defaultEngine);
+  const [gameEngine, setGameEngine] = useReducer(engineReducer, defaultEngine);
 
   return (
     <div className="line main-comp">
