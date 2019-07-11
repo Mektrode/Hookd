@@ -5,7 +5,7 @@ import ScoreCard from "../components/ScoreCard";
 import AddScore from "../components/AddScore";
 
 function MyScoreList() {
-  const { status, myscores } = useContext(StoreContext);
+  const { status, myscores, rankBy } = useContext(StoreContext);
   //Parse Through myscores array and sort by order of latest timestamp first
 
   return (

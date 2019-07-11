@@ -45,9 +45,6 @@ export const Provider = props => {
     }
   };
 
-  // Initial values are obtained from the props
-  const { children } = props;
-
   const [status, setStatus] = useState(initialStatusSetup());
   const [myscores, setScore] = useState(initialScoresSetup());
 
@@ -77,7 +74,7 @@ export const Provider = props => {
   };
 
   const rankBy = (duration, user) => {
-    return [
+    const oldScores = [
       {
         id: 1160973042627,
         targetScore: 310183,
@@ -97,6 +94,10 @@ export const Provider = props => {
         date: "32m ago"
       }
     ];
+
+    if (duration === "today") {
+      return oldScores[0];
+    } else return oldScores[1];
   };
 
   const clearScores = () => {
@@ -125,6 +126,7 @@ export const Provider = props => {
     console.log(newStatusPush);
     setStatus(newStatusPush);
   };
+
   // Make the context object:
   const setupContext = {
     status,
@@ -134,6 +136,10 @@ export const Provider = props => {
     newScore,
     rankBy
   };
+
+  // Initial values are obtained from the props
+  const { children } = props;
+
   // pass the value in provider and return
   return <Context.Provider value={setupContext}>{children}</Context.Provider>;
 };
