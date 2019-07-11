@@ -19,13 +19,13 @@ const defaultGame = {
   startnum: 2,
 
   //Time Given
-  timeGiven: 60,
-
-  //Target Number
-  target: 100
+  timeGiven: 60
 };
 
 const defaultEngine = {
+  //Target Number
+  target: null,
+
   //Is the countdown on?
   timerOn: false,
 
