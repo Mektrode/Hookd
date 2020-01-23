@@ -2,6 +2,8 @@
 
 A PWA game built using React Hooks and the new Context API.
 
+>NOTE: Finishing the functional game components before spicing up the UI/CSS.
+
 ## To Start, Clone Me 🙋‍♂️ Then Follow The Instructions 👇🏾
 
 ### `npm start`
